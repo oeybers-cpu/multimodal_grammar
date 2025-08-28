@@ -1,3 +1,8 @@
+Of course. I will update the webpage with the new images, arrange them in a two-column grid of square-shaped cards, and add the "Home" link as requested. I will also ensure the existing dark blue and turquoise theme and coherent formatting are maintained.
+
+Here is the revised code:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            /* Updated Dark Blue & Turquoise Palette */
             --bg-dark-start: #020a1a;
             --bg-dark-end: #041a3d;
             --text-light: #e0f2f1;
@@ -70,13 +74,13 @@
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             color: var(--text-light);
-            text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
         }
-
+        
         h1 {
             font-size: 2.8rem;
             margin-bottom: 1rem;
             letter-spacing: 2px;
+            text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
             animation: pulse-glow 3s infinite alternate;
         }
 
@@ -86,12 +90,14 @@
             border-bottom: 2px solid var(--accent-turquoise);
             padding-bottom: 0.5rem;
             color: var(--accent-turquoise);
+            text-shadow: 0 0 5px var(--glow-color);
         }
 
         h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--accent-light-blue);
+            text-shadow: 0 0 3px var(--glow-color);
         }
 
         p {
@@ -117,6 +123,26 @@
             position: relative;
             overflow: hidden;
             border-bottom: 2px solid var(--accent-turquoise);
+        }
+        
+        .home-link {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+        }
+        
+        .home-link:hover {
+            background: rgba(19, 47, 74, 0.9);
+            box-shadow: 0 0 10px var(--glow-color);
         }
 
         .header::before {
@@ -158,26 +184,43 @@
             background: rgba(19, 47, 74, 0.8);
         }
         
-        .card-image {
+        .image-card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .image-card {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .image-card .card-image {
             width: 100%;
-            height: auto; /* Maintain aspect ratio */
-            max-height: 350px; /* Prevent images from being too tall */
-            object-fit: cover; /* Crop image to fit */
-            border-radius: 10px;
-            margin-top: 1rem;
-            border: 1px solid var(--card-border);
+            padding-top: 100%; /* 1:1 Aspect Ratio */
+            position: relative;
+            border-radius: 15px 15px 0 0;
+            overflow: hidden;
+        }
+        
+        .image-card .card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-card .card-content {
+            padding: 1.5rem;
         }
 
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
-        }
-
-        .card h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
         }
 
         .card h3 i {
@@ -214,12 +257,10 @@
             border: 2px solid var(--card-border);
         }
 
-        .mode-icon {
-            font-size: 2rem;
-            color: var(--accent-light-blue);
-            margin-bottom: 1rem;
-            display: block;
-            text-align: center;
+        @media (max-width: 992px) {
+            .image-card-grid {
+                grid-template-columns: 1fr; /* Stack to single column */
+            }
         }
 
         @media (max-width: 768px) {
@@ -239,6 +280,9 @@
 <body>
     <div class="container">
         <header class="header">
+            <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-link" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-home"></i> Home
+            </a>
             <h1>Multimodal Grammar</h1>
             <p style="color: var(--text-secondary);">An exploration of meaning beyond words in a deep blue framework.</p>
         </header>
@@ -250,14 +294,10 @@
                     <ul>
                         <li><a href="#introduction"><i class="fas fa-book-open"></i> Introduction</a></li>
                         <li><a href="#modes"><i class="fas fa-cubes"></i> The Five Modes</a></li>
-                        <li><a href="#linguistic"><i class="fas fa-pen-nib"></i> Linguistic</a></li>
-                        <li><a href="#visual"><i class="fas fa-eye"></i> Visual</a></li>
-                        <li><a href="#aural"><i class="fas fa-volume-up"></i> Aural</a></li>
-                        <li><a href="#gestural"><i class="fas fa-hand-paper"></i> Gestural</a></li>
-                        <li><a href="#spatial"><i class="fas fa-th-large"></i> Spatial</a></li>
+                        <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
                     </ul>
                 </nav>
-                <img src="https://images.unsplash.com/photo-1630510306016-82dbeaa473ce?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRhbmNlJTIwQWZyaWNhfGVufDB8fDB8fHww" alt="African Dance" class="sidebar-image">
+                <img src="https://raw.githubusercontent.com/oeybers-cpu/multimodal_grammar/main/scholar_in_library.png" alt="Scholar in library" class="sidebar-image">
             </aside>
 
             <main class="main-content">
@@ -295,49 +335,46 @@
                         </div>
                     </div>
                 </section>
-
-                <section id="linguistic" style="margin-top: 2rem;">
-                    <div class="card">
-                        <i class="fas fa-pen-nib mode-icon"></i>
-                        <h3>The Linguistic Mode</h3>
-                        <p>The linguistic mode is the foundation of how we often think about communication. It's about the words we choose and how we arrange them. In a digital context, this extends to hypertext, chat messages, and on-screen text. Effective linguistic communication is clear, concise, and appropriate for the audience and context. For example, the paper this page is based on highlights that in instructional videos, narration should use a conversational style with basic command verbs and short, simple sentences to be effective.</p>
-                        <img src="https://media.istockphoto.com/id/2162514249/photo/business-people-in-the-office.webp?a=1&b=1&s=612x612&w=0&k=20&c=lkIScCN9fGdRdaR66Te8yr35R2z329LCmRClTbYW-TA=" alt="Business people in an office" class="card-image">
-                    </div>
-                </section>
-
-                <section id="visual" style="margin-top: 2rem;">
-                    <div class="card">
-                        <i class="fas fa-eye mode-icon"></i>
-                        <h3>The Visual Mode</h3>
-                        <p>The visual mode is incredibly powerful, conveying complex information in an instant. It includes still and moving images, colors, icons, and the overall layout and design. As the source text notes, visual elements should support the information, not distract from it. For instance, cropping a window to show only relevant information or using visual cues like arrows and zooms helps to highlight key information and reduce cognitive load for the viewer. The very design of this page—its colors, fonts, and layout—is a use of the visual mode to create a specific feeling.</p>
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGlzY3Vzc2lvbnxlbnwwfHwwfHx8MA%3D%3D" alt="People in a discussion" class="card-image">
-                    </div>
-                </section>
-
-                <section id="aural" style="margin-top: 2rem;">
-                    <div class="card">
-                        <i class="fas fa-volume-up mode-icon"></i>
-                        <h3>The Aural Mode</h3>
-                        <p>Sound shapes our experience and understanding. The aural mode includes not just spoken words, but also music, sound effects, and the qualities of a voice (volume, pitch, rhythm). The provided text emphasizes that extraneous sounds, like loud background music, can interfere with a viewer's ability to process narration. A well-chosen soundtrack can set a mood, while a clear, well-paced narration makes information easier to understand. Even silence is a powerful aural tool, creating pauses for emphasis or reflection.</p>
-                        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3BlYWtlcnN8ZW58MHx8MHx8fDA%3D" alt="Audio speakers" class="card-image">
-                    </div>
-                </section>
-
-                <section id="gestural" style="margin-top: 2rem;">
-                    <div class="card">
-                        <i class="fas fa-hand-paper mode-icon"></i>
-                        <h3>The Gestural Mode</h3>
-                        <p>The gestural mode involves communication through movement. This includes facial expressions that convey emotion, hand gestures that emphasize a point, and body language that signals confidence or uncertainty. While not the focus of the provided paper (as narrators were not always on screen), gesture is a critical part of face-to-face communication and is increasingly relevant in video calls and virtual reality. A simple nod, a wave, or a smile can add a rich layer of meaning to spoken words.</p>
-                        <img src="https://images.unsplash.com/photo-1752650143804-de2813c2b5bd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG9ubGluZSUyMHZpZGVvfGVufDB8fDB8fHww" alt="Person gesturing on a video call" class="card-image">
-                    </div>
-                </section>
-
-                <section id="spatial" style="margin-top: 2rem;">
-                    <div class="card">
-                        <i class="fas fa-th-large mode-icon"></i>
-                        <h3>The Spatial Mode</h3>
-                        <p>The spatial mode is about how elements are arranged and the meaning that this arrangement creates. On a page, this could be the layout of text and images. In a physical space, it could be the architecture of a building. The source text points out the importance of spatial organization in video, such as displaying information in a way that is easy for the viewer to follow. The proximity of elements, their alignment, and the direction they guide the eye are all part of the spatial mode. This page, for example, uses a two-column layout to separate navigation from content, a key spatial decision.</p>
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b2ZmaWNlJTIwbGF5b3V0fGVufDB8fDB8fHww" alt="Office layout" class="card-image">
+                
+                <section id="gallery" style="margin-top: 2rem;">
+                    <h2><i class="fas fa-images"></i> Communication Gallery</h2>
+                    <div class="image-card-grid">
+                        <div class="card image-card">
+                            <div class="card-image">
+                                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true" alt="Digital Communication in Africa">
+                            </div>
+                            <div class="card-content">
+                                <h3>Digital Communication</h3>
+                                <p>Technology merges with culture, creating new forms of expression and connection across distances.</p>
+                            </div>
+                        </div>
+                        <div class="card image-card">
+                            <div class="card-image">
+                                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/embodied_communication_asia.png?raw=true" alt="Embodied Communication in Asia">
+                            </div>
+                            <div class="card-content">
+                                <h3>Embodied Communication</h3>
+                                <p>Meaning conveyed through the body's posture, gesture, and movement in a shared space.</p>
+                            </div>
+                        </div>
+                        <div class="card image-card">
+                            <div class="card-image">
+                                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/spoken_communication_americas.png?raw=true" alt="Spoken Communication in the Americas">
+                            </div>
+                            <div class="card-content">
+                                <h3>Spoken Communication</h3>
+                                <p>The power of voice, tone, and narrative to share stories and ideas in a community setting.</p>
+                            </div>
+                        </div>
+                        <div class="card image-card">
+                            <div class="card-image">
+                                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/traditional_communication_africa.png?raw=true" alt="Traditional Communication in Africa">
+                            </div>
+                            <div class="card-content">
+                                <h3>Traditional Communication</h3>
+                                <p>Ancient methods of storytelling and record-keeping that form the bedrock of cultural identity.</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -346,4 +383,4 @@
     </div>
 </body>
 </html>
-
+```
