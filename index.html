@@ -57,12 +57,14 @@
             width: 280px;
             padding: 2rem;
             border-right: 1px solid var(--card-border);
+            flex-shrink: 0;
         }
 
         .main-content {
             flex: 1;
             padding: 2rem;
             overflow-y: auto;
+            min-width: 0;
         }
 
         h1, h2, h3 {
@@ -133,6 +135,7 @@
             border-radius: 8px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 500;
+            z-index: 10;
         }
         
         .home-link:hover {
@@ -181,7 +184,7 @@
         
         .image-card-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
         
@@ -210,6 +213,7 @@
         
         .image-card .card-content {
             padding: 1.5rem;
+            flex-grow: 1;
         }
 
         .card-grid {
@@ -252,12 +256,6 @@
             border: 2px solid var(--card-border);
         }
 
-        @media (max-width: 992px) {
-            .image-card-grid {
-                grid-template-columns: 1fr; /* Stack to single column */
-            }
-        }
-
         @media (max-width: 768px) {
             .main-layout {
                 flex-direction: column;
@@ -267,8 +265,17 @@
                 border-right: none;
                 border-bottom: 1px solid var(--card-border);
             }
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.7rem; }
+            .header {
+                padding-top: 5rem; /* More space for the home link */
+                padding-bottom: 2rem;
+            }
+            .home-link {
+                top: 1rem;
+                left: 50%;
+                transform: translateX(-50%); /* Center the link */
+            }
         }
     </style>
 </head>
@@ -292,7 +299,8 @@
                         <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
                     </ul>
                 </nav>
-                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/6f077244c55e216dd330dd104d081e79ba236442/scholar.png" alt="Scholar in library" class="sidebar-image">
+                <!-- CORRECTED IMAGE LINK -->
+                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/scholar.png?raw=true" alt="Scholar in library" class="sidebar-image">
             </aside>
 
             <main class="main-content">
