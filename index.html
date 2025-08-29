@@ -120,6 +120,42 @@
             position: relative;
             overflow: hidden;
             border-bottom: 2px solid var(--accent-turquoise);
+            min-height: 400px; /* Added to ensure enough space for video */
+        }
+        
+        /* Video container styles */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place behind content */
+            overflow: hidden;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4; /* Subtle transparency to not overwhelm text */
+        }
+        
+        /* Dark overlay for better text readability */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(2, 10, 26, 0.7) 0%, 
+                rgba(4, 26, 61, 0.5) 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1; /* Ensure text appears above video */
         }
         
         .home-link {
@@ -152,6 +188,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.2), transparent);
             animation: shimmer 5s infinite linear;
+            z-index: 2; /* Above video but below text */
         }
 
         @keyframes shimmer {
@@ -268,13 +305,14 @@
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.7rem; }
             .header {
-                padding-top: 5rem; /* More space for the home link */
+                padding-top: 5rem;
                 padding-bottom: 2rem;
+                min-height: 300px; /* Adjust for mobile */
             }
             .home-link {
                 top: 1rem;
                 left: 50%;
-                transform: translateX(-50%); /* Center the link */
+                transform: translateX(-50%);
             }
         }
     </style>
@@ -282,11 +320,23 @@
 <body>
     <div class="container">
         <header class="header">
+            <!-- Video Container -->
+            <div class="video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="https://github.com/oeybers-cpu/a_lit_models/raw/91d820214603f40b59a1a9b75b2d3c2a4c73c8ef/a353784b-7ea5-4eee-a717-4346d5e2bedb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            
             <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-link" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-home"></i> Home
             </a>
-            <h1>Multimodal Literacy</h1>
-            <p style="color: var(--text-secondary);">An exploration of meaning, through words and beyond.</p>
+            
+            <div class="header-content">
+                <h1>Multimodal Literacy</h1>
+                <p style="color: var(--text-secondary);">An exploration of meaning, through words and beyond.</p>
+            </div>
         </header>
 
         <div class="main-layout">
@@ -299,7 +349,6 @@
                         <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
                     </ul>
                 </nav>
-                <!-- CORRECTED IMAGE LINK -->
                 <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/scholar.png?raw=true" alt="Scholar in library" class="sidebar-image">
             </aside>
 
@@ -380,7 +429,6 @@
                         </div>
                     </div>
                 </section>
-
             </main>
         </div>
     </div>
