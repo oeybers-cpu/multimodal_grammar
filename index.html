@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multimodal Literacy: Empowering African Youth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Limits of Autonomous Models of Academic Literacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css  ">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -31,14 +31,10 @@
             --card-gap: 25px;
             --nav-banner-height: 60px;
             
-            /* Digital elements */
-            --digital-grid: rgba(79, 195, 247, 0.03);
-            --digital-grid-hover: rgba(79, 195, 247, 0.1);
-            --digital-glow: rgba(207, 64, 255, 0.3);
-            
-            /* Warning colors */
-            --warning-red: #ff4444;
-            --warning-glow: #ff6666;
+            /* Sun variables */
+            --sun-color: #FFC107;
+            --sun-glow: #FFA000;
+            --sun-ray-color: #FFD700;
             
             /* Font Variables */
             --font-heading: 'Orbitron', sans-serif;
@@ -56,7 +52,7 @@
             line-height: 1.6;
         }
         
-        /* Digital Grid Lines Background */
+        /* Grid Lines Background - Fixed with proper contrast */
         .grid-lines {
             position: fixed;
             top: 0;
@@ -64,36 +60,11 @@
             width: 100%;
             height: 100%;
             background-image:
-                linear-gradient(var(--digital-grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--digital-grid) 1px, transparent 1px);
+                linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
             pointer-events: none;
             z-index: -1;
-        }
-        
-        /* Digital Particle Effect */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--digital-purple);
-            opacity: 0.3;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); opacity: 0.3; }
-            50% { opacity: 0.6; }
-            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
         
         /* NEW: Dedicated Navigation Banner */
@@ -164,55 +135,6 @@
             box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        
-        /* NEW: Warning Banner - moved to far right */
-        .warning-banner {
-            position: fixed;
-            top: 25px;
-            right: 25px;
-            z-index: 1002;
-            background: var(--warning-red);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: default;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px var(--warning-glow);
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            animation: pulseWarning 1.5s infinite;
-            text-transform: uppercase;
-        }
-        
-        @keyframes pulseWarning {
-            0% {
-                box-shadow: 0 0 20px var(--warning-glow);
-                transform: translateX(0);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(255, 86, 86, 0.9);
-                transform: translateX(-5px);
-            }
-            100% {
-                box-shadow: 0 0 20px var(--warning-glow);
-                transform: translateX(0);
-            }
-        }
-        
-        .warning-banner i {
-            font-size: 1.3rem;
-            animation: flashIcon 1.5s infinite;
-        }
-        
-        @keyframes flashIcon {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
         }
         
         /* Header Styles */
@@ -376,11 +298,49 @@
             width: 100%;
             height: 180px;
             object-fit: cover;
-            object-position: center;
+            object-position: center 30%;
             border-radius: 8px;
             margin-bottom: 15px;
             border: 2px solid rgba(207, 64, 255, 0.3);
             transition: transform 0.3s ease;
+        }
+        
+        /* FIXED: Adjusted royalty image to show faces at top */
+        .royalty-image {
+            object-position: top !important;
+            height: 180px !important;
+        }
+        
+        /* FIXED: New horizontal image style for digital youth */
+        .horizontal-image {
+            height: 180px !important;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        /* FIXED: African epistemology image to be centered in the card */
+        .epistemology-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        .epistemology-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        .epistemology-image {
+            max-height: 250px;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid rgba(207, 64, 255, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
         .article-card:hover .card-image {
@@ -396,6 +356,72 @@
             border-bottom: 1px solid rgba(207, 64, 255, 0.3);
             font-family: var(--font-heading);
             text-align: center;
+        }
+        
+        /* Content Sections - Added specific IDs for navigation */
+        #introduction-section {
+            scroll-margin-top: 140px;
+        }
+        
+        #autonomous-models-section {
+            scroll-margin-top: 140px;
+        }
+        
+        #colonial-legacy-section {
+            scroll-margin-top: 140px;
+        }
+        
+        #disciplinary-approach-section {
+            scroll-margin-top: 140px;
+        }
+        
+        /* Contact Card */
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 11.25px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 24px rgba(207, 64, 255, 0.3);
+        }
+        
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .contact-card h2 {
+            color: var(--digital-purple);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
         }
         
         /* Content Container */
@@ -450,34 +476,122 @@
             color: var(--light);
         }
         
-        /* Narrative Content Section */
-        .narrative-section {
-            margin-bottom: 40px;
+        /* Two-column layout for the autonomous models card */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
         }
         
-        .narrative-section p {
-            margin-bottom: 15px;
-            line-height: 1.7;
+        @media (max-width: 768px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .highlight {
-            background: rgba(207, 64, 255, 0.15);
-            color: var(--primary);
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-weight: 500;
+        .column-divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(207, 64, 255, 0.5), transparent);
+            transform: translateX(-50%);
         }
         
-        .quote {
-            background: rgba(207, 64, 255, 0.1);
+        .column {
+            position: relative;
+            padding: 0 15px;
+        }
+        
+        .column h3 {
+            color: var(--digital-purple);
+            margin: 15px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .column-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid rgba(207, 64, 255, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .historical-context {
+            background: rgba(207, 64, 255, 0.08);
             border-left: 3px solid var(--digital-purple);
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-            color: var(--lighter-accent);
+            padding: 12px;
+            border-radius: 0 4px 4px 0;
+            margin: 15px 0;
         }
         
+        .modern-context {
+            background: rgba(65, 105, 225, 0.08);
+            border-left: 3px solid var(--royal-blue-light);
+            padding: 12px;
+            border-radius: 0 4px 4px 0;
+            margin: 15px 0;
+        }
+
+        /* Mobile Historical Cards - 50% smaller */
+        .mobile-historical-cards {
+            display: none;
+            grid-template-columns: 1fr;
+            gap: calc(var(--card-gap) / 2);
+            margin: 15px 0;
+        }
+        
+        .mobile-historical-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 6px;
+            padding: calc(var(--card-padding) / 2);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 2.5px 7.5px rgba(207, 64, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mobile-historical-card h3 {
+            color: var(--digital-purple);
+            font-size: 0.65rem;
+            margin-bottom: 7.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-heading);
+        }
+        
+        .mobile-historical-image {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 7.5px;
+            border: 1px solid rgba(207, 64, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-historical-image.slave-image {
+            object-position: center 20%;
+        }
+        
+        .mobile-historical-image.plantation-image {
+            object-position: center 40%;
+        }
+        
+        .mobile-historical-image.colossus-image {
+            object-position: center 50%;
+        }
+
         /* Keyword Tabs Styles */
         .keyword-tabs {
             display: flex;
@@ -697,220 +811,286 @@
 <body>
     <div class="grid-lines"></div>
     
-    <!-- Digital particle effect for subtle movement -->
-    <div class="particles" id="particles"></div>
-    
-    <!-- Navigation Banner -->
+    <!-- NEW: Dedicated Navigation Banner -->
     <div class="nav-banner">
         <!-- Fixed home button linking to correct URL -->
         <a href="https://oeybers-cpu.github.io/a_lit_models/" class="back-button-tab" id="homeButton">
             <i class="fas fa-home"></i> Home
         </a>
-        <!-- Warning Banner -->
-        <div class="warning-banner">
-            <i class="fas fa-exclamation-triangle"></i> Warning CC
-        </div>
         <a href="https://oeybers-cpu.github.io/contact/" class="contact-button-tab" id="contactButton">
             <i class="fas fa-envelope"></i> Contact
         </a>
     </div>
     
     <div class="top-header">
-        <h1>Multimodal Literacy: Empowering African Youth</h1>
+        <h1>Limits of Autonomous Models of Academic Literacy</h1>
     </div>
 
     <div class="main-container">
         <div class="page-layout">
-            <!-- Navigation Sidebar -->
+            <!-- Navigation Sidebar - now positioned lower and stays with user as they scroll -->
             <div class="nav-sidebar">
                 <div class="sidebar-nav">
-                    <a href="#introduction" class="sidebar-link active">
-                        <i class="fas fa-book-open"></i> Introduction
+                    <a href="#introduction-section" class="sidebar-link active">
+                        <i class="fas fa-graduation-cap"></i> Introduction
                     </a>
-                    <a href="#digital-literacy" class="sidebar-link">
-                        <i class="fas fa-laptop"></i> Digital Literacy
+                    <a href="#autonomous-models-section" class="sidebar-link">
+                        <i class="fas fa-book-open"></i> Understanding Autonomous Models
                     </a>
-                    <a href="#multimodal-approach" class="sidebar-link">
-                        <i class="fas fa-cubes"></i> Multimodal Approach
+                    <a href="#colonial-legacy-section" class="sidebar-link">
+                        <i class="fas fa-balance-scale"></i> Colonial Educational Legacies
                     </a>
-                    <a href="#african-youth" class="sidebar-link">
-                        <i class="fas fa-users"></i> Empowering African Youth
-                    </a>
-                    <a href="#community-impact" class="sidebar-link">
-                        <i class="fas fa-hands-helping"></i> Community Impact
+                    <a href="#disciplinary-approach-section" class="sidebar-link">
+                        <i class="fas fa-handshake"></i> Disciplinary Approaches
                     </a>
                 </div>
             </div>
             
             <!-- Main Content Area -->
             <div class="content-area">
-                <!-- Introduction Section -->
-                <div class="full-width-card" id="introduction">
-                    <h2><i class="fas fa-book-open"></i> Introduction: Beyond Traditional Literacy</h2>
+                <!-- Introduction Section with specific ID -->
+                <div class="contact-card" id="introduction-section">
+                    <h2><i class="fas fa-graduation-cap"></i> Introduction</h2>
                     <div class="keyword-tabs">
-                        <div class="keyword-tab">Multimodal</div>
-                        <div class="keyword-tab">Empowerment</div>
-                        <div class="keyword-tab">Digital Literacy</div>
+                        <div class="keyword-tab">Academic Literacy</div>
+                        <div class="keyword-tab">Post-Apartheid</div>
+                        <div class="keyword-tab">Disciplinary Approach</div>
                     </div>
-                    <p>In today's digital age, literacy extends far beyond reading and writing. Traditional academic literacy models often fail to recognize the diverse ways young Africans communicate and express knowledge. This page explores how <span class="highlight">multimodal literacy</span> can empower African youth by validating their digital, visual, and cultural communication practices.</p>
-                    
-                    <p>For many African students, the disconnect between their everyday communication practices and academic expectations creates significant barriers. While they navigate complex digital landscapes with ease, traditional academic settings often dismiss these skills as irrelevant. This perspective not only undermines their capabilities but also fails to leverage their existing strengths in the learning process.</p>
-                    
-                    <div class="quote">
-                        "Literacy is not a single skill but a set of practices that vary across contexts and communities. Recognizing the multimodal nature of communication is essential for creating inclusive educational spaces that honor students' cultural identities."
-                    </div>
-                    
-                    <p>By embracing multimodal approaches, we acknowledge that communication happens through multiple channels - visual, digital, gestural, spatial, and linguistic. This recognition is particularly crucial in African contexts where oral traditions, visual storytelling, and community-based knowledge systems have long been central to education and cultural transmission.</p>
+                    <p>This website explores the critical limitations of autonomous models of academic literacy in post-apartheid higher education, particularly within the African context. Our focus is on developing students' capabilities to succeed in disciplines and specific fields of study by moving beyond decontextualised approaches toward context-specific, disciplinary literacy frameworks that acknowledge the social and cultural dimensions of knowledge production.</p>
                 </div>
 
-                <!-- Digital Literacy Section -->
-                <div class="full-width-card" id="digital-literacy">
-                    <h2><i class="fas fa-laptop"></i> Digital Literacy in African Contexts</h2>
+                <!-- Autonomous Models Section with specific ID -->
+                <div class="full-width-card" id="autonomous-models-section">
+                    <h2><i class="fas fa-book-open"></i> Understanding Autonomous Models of Literacy</h2>
                     <div class="keyword-tabs">
-                        <div class="keyword-tab">Mobile Technology</div>
-                        <div class="keyword-tab">Social Media</div>
-                        <div class="keyword-tab">Digital Navigation</div>
+                        <div class="keyword-tab">Decontextualised</div>
+                        <div class="keyword-tab">Technical Skills</div>
+                        <div class="keyword-tab">Universalist</div>
                     </div>
-                    <p>Africa is experiencing a digital revolution unlike any other. With mobile penetration rates exceeding 80% in many countries, young Africans are becoming digital natives who navigate complex technological landscapes daily. However, traditional academic literacy frameworks often fail to recognize these sophisticated digital practices as legitimate forms of literacy.</p>
                     
-                    <div class="articles-container">
-                        <div class="article-card">
-                            <h3><i class="fas fa-mobile-alt"></i> Mobile-First Communication</h3>
-                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true" alt="African youth using mobile technology" class="card-image">
-                            <p>Across Africa, mobile phones have become primary tools for communication, learning, and economic participation. Young people use WhatsApp, Facebook, and other platforms to share knowledge, create communities, and develop digital identities. These practices represent sophisticated multimodal literacy skills that include visual communication, code-switching between languages, and understanding digital audiences.</p>
+                    <div class="two-column-layout">
+                        <div class="column">
+                            <h3><i class="fas fa-history"></i> Historical Context: Language and Power in Africa</h3>
+                            <img src="https://schoolrack.com/wp-content/uploads/2023/10/What-is-Bantu-Education-in-South-Africa-History-and-Education-Act-during-Apartheid-1024x576.jpg" 
+                                 alt="Bantu Education in South Africa during Apartheid" 
+                                 class="column-image">
+                            <p>While colonial and apartheid educational systems implemented exclusionary language policies, it's crucial to recognise that pre-colonial African societies also employed language and literacy as mechanisms of power and control. Certain African kingdoms and social groups strategically used language to regulate access to political authority and social privilege, establishing linguistic hierarchies where mastery of specific languages or dialects granted elite status and access to governance or religious power.</p>
+                            
+                            <div class="historical-context">
+                                <h3><i class="fas fa-landmark"></i> Linguistic Control in Pre-colonial Africa</h3>
+                                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/royal.png?raw=true" 
+                                     alt="Royal symbols and language in pre-colonial African kingdoms" 
+                                     class="column-image royalty-image">
+                                <p>In many pre-colonial African societies, linguistic hierarchies functioned as gatekeepers to symbolic and material resources. The concept of "proper" or "legitimate" speech was often assigned significant symbolic value by elites, determining who could participate in governance, religious ceremonies, and knowledge transmission. For instance, in the Great Zimbabwe civilisation, specific dialects were associated with royal authority, while in pre-colonial Buganda, the Luganda language was tightly controlled as a marker of elite status.</p>
+                                
+                                <!-- Ethiopian priests image added here -->
+                                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/Ethiopian%20priests.png?raw=true" 
+                                     alt="Ethiopian priests demonstrating linguistic traditions" 
+                                     style="width: 100%; max-width: 400px; height: auto; display: block; margin: 15px auto; border-radius: 8px; border: 2px solid rgba(207, 64, 255, 0.3);">
+                                
+                                <p>Oral traditions, though vital for cultural transmission, frequently reinforced existing power structures by controlling which narratives and historical accounts were authorised and preserved by ruling groups. This selective preservation of history through controlled oral channels created what scholars term "authorised memory," shaping collective identity according to the interests of those in power.</p>
+                                <p>The use of Ajami scripts (Arabic script adapted to local African languages) exemplifies complex multilingual power dynamics, where religious and administrative knowledge was often restricted to those literate in these specialised writing systems. This linguistic stratification demonstrates that the relationship between language, power, and access to knowledge is not merely a colonial imposition but has deeper historical roots in African societies themselves.</p>
+                            </div>
                         </div>
                         
-                        <div class="article-card">
-                            <h3><i class="fas fa-hashtag"></i> Social Media as Knowledge Spaces</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/future%20digital%20youth.png?raw=true" alt="African youth engaging on social media" class="card-image">
-                            <p>Social media platforms have become vibrant knowledge spaces where African youth engage in critical discussions, share cultural content, and develop digital citizenship skills. From creating TikTok educational content to participating in Twitter debates about social issues, young Africans are demonstrating advanced multimodal literacy practices that traditional academic settings often overlook.</p>
+                        <div class="column">
+                            <h3><i class="fas fa-university"></i> Contemporary Manifestations</h3>
+                            <img src="https://i0.wp.com/news365.co.za/wp-content/uploads/2020/10/Fees-Must-Fall.jpg?fit=400%2C225&ssl=1" 
+                                 alt="Fees Must Fall protest at South African university" 
+                                 class="column-image">
+                            <p>In post-apartheid South African universities, autonomous models of academic literacy continue to contribute to high student attrition rates and feelings of alienation among African students. The failure to create inclusive academic spaces that recognise and integrate African epistemologies and socio-epistemic identities stems from the same mindset that drove Bantu Education - the assumption that academic literacy is a universal, transferable skill set. The Fees Must Fall movement highlighted these ongoing challenges in access to higher education.</p>
+                            
+                            <div class="modern-context">
+                                <h3><i class="fas fa-lightbulb"></i> Moving Forward</h3>
+                                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/future%20digital%20youth.png?raw=true" 
+                                     alt="Digital youth in South Africa" 
+                                     class="column-image horizontal-image">
+                                <p>Contemporary research increasingly recognises that academic literacy cannot be reduced to a set of transferable skills but must be understood as situated within specific knowledge communities. Approaches that treat literacy as a neutral skill set often overlook the complex ways in which academic communication is embedded within specific disciplinary communities and cultural contexts.</p>
+                                <p>The recognition that academic literacy is inherently situated within specific communities challenges simplistic approaches to academic writing instruction. This understanding requires us to move beyond technical skills training toward approaches that help students navigate the complex literacy practices of their disciplines while drawing on their cultural resources as strengths.</p>
+                                <p>Understanding the historical use of language as a tool of power in both pre-colonial and colonial contexts provides critical perspective for developing academic literacy approaches that acknowledge power dynamics while creating more inclusive educational spaces.</p>
+                                <!-- Superhero image added here -->
+                                <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/She%20superhero.png?raw=true" 
+                                     alt="Superhero representing academic literacy empowerment" 
+                                     class="superhero-image">
+                            </div>
                         </div>
                     </div>
-                    
-                    <p>These digital practices aren't just recreational; they're essential survival skills in a rapidly changing world. The ability to navigate digital spaces, evaluate online information, and create multimodal content represents a new form of literacy that's crucial for economic participation and social engagement. By recognizing these skills as valuable academic literacies, we can bridge the gap between students' everyday experiences and academic expectations.</p>
                 </div>
 
-                <!-- Multimodal Approach Section -->
-                <div class="full-width-card" id="multimodal-approach">
-                    <h2><i class="fas fa-cubes"></i> The Multimodal Approach to Academic Literacy</h2>
-                    <div class="keyword-tabs">
-                        <div class="keyword-tab">Five Modes</div>
-                        <div class="keyword-tab">Integration</div>
-                        <div class="keyword-tab">Disciplinary Literacy</div>
+                <!-- Colonial Legacy Section with specific ID -->
+                <h2 class="section-title" id="colonial-legacy-section">Colonial and Apartheid Educational Legacies</h2>
+                
+                <!-- Regular cards for larger screens -->
+                <div class="articles-container">
+                    <div class="article-card">
+                        <h3><i class="fas fa-history"></i> Colonial Education Systems</h3>
+                        <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo1.png?raw=true" alt="Robot being programmed with academic literacy skills" class="card-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Programming</div>
+                            <div class="keyword-tab">Dehumanising</div>
+                            <div class="keyword-tab">Cultural Erasure</div>
+                        </div>
+                        <p>The autonomous model treats literacy as a neutral technical skill, like programming a machine. This perspective ignores how academic communication is deeply embedded in cultural contexts and power structures. When literacy is viewed as merely grammar rules and formatting conventions, it becomes disconnected from the rich tapestry of knowledge traditions that students bring to the classroom.</p>
+                        <p>This approach positions students as empty vessels to be filled with standardised academic practices, rather than as active participants in knowledge creation. It fails to recognise that academic communication varies across disciplines and cultures, reducing complex literacy practices to a checklist of technical requirements that students must mechanically follow.</p>
+                        <p>By framing academic literacy as a universal skill set, the autonomous model overlooks how language serves as both a tool for knowledge construction and a marker of identity within academic communities.</p>
                     </div>
-                    <p>Multimodal literacy recognizes that communication happens through multiple channels simultaneously. This approach moves beyond the limitations of traditional literacy models that focus exclusively on written text. For African students, whose cultural backgrounds often emphasize oral, visual, and communal forms of knowledge transmission, a multimodal approach offers a more inclusive framework for academic success.</p>
-                    
-                    <div class="articles-container">
-                        <div class="article-card">
-                            <h3><i class="fas fa-eye"></i> Visual Communication</h3>
-                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/embodied_communication_asia.png?raw=true" alt="Visual communication examples" class="card-image">
-                            <p>Visual literacy is particularly significant in African contexts where visual storytelling traditions run deep. From traditional beadwork patterns to contemporary digital graphics, visual communication carries complex cultural meanings. In academic settings, recognizing visual literacy helps students express knowledge through infographics, presentations, and visual essays that honor their cultural strengths.</p>
+
+                    <div class="article-card">
+                        <h3><i class="fas fa-balance-scale"></i> Bantu Education Act Legacy</h3>
+                        <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo2.png?raw=true" alt="Robotic arms performing isolated academic tasks" class="card-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Fragmentation</div>
+                            <div class="keyword-tab">Mechanical</div>
+                            <div class="keyword-tab">Assembly Line</div>
                         </div>
-                        
-                        <div class="article-card">
-                            <h3><i class="fas fa-volume-up"></i> Aural and Oral Traditions</h3>
-                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/spoken_communication_americas.png?raw=true" alt="Oral communication traditions" class="card-image">
-                            <p>Africa's rich oral traditions provide powerful frameworks for academic communication. Storytelling, proverbs, and communal discussion formats can be integrated into academic practices, validating students' cultural knowledge while developing their academic voice. Podcasts, oral presentations, and collaborative discussions become legitimate academic practices within this framework.</p>
-                        </div>
-                        
-                        <div class="article-card">
-                            <h3><i class="fas fa-hands-helping"></i> Spatial and Gestural Communication</h3>
-                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/traditional_communication_africa.png?raw=true" alt="Gestural communication" class="card-image">
-                            <p>How knowledge is organized spatially and expressed through gesture matters deeply in African educational contexts. The arrangement of learning spaces, the use of body language in presentations, and the spatial organization of information all contribute to meaning-making. Recognizing these dimensions helps students communicate effectively in academic settings while maintaining cultural authenticity.</p>
-                        </div>
-                        
-                        <div class="article-card">
-                            <h3><i class="fas fa-language"></i> Linguistic Diversity</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo1.png?raw=true" alt="Linguistic diversity" class="card-image">
-                            <p>Africa is home to over 2,000 languages, and most African students are multilingual. Rather than viewing this as a deficit, a multimodal approach recognizes code-switching and multilingual communication as sophisticated literacy practices. Academic writing that incorporates African languages, translanguaging, and culturally specific rhetorical patterns becomes a strength rather than a weakness.</p>
-                        </div>
+                        <p>Like the assembly line production of the Bantu Education Act, the autonomous model fragments academic literacy into isolated technical components. This approach treats knowledge as something that can be mechanically transferred from teacher to student, ignoring how meaning is constructed through cultural and disciplinary engagement.</p>
+                        <p>The historical legacy of educational systems that deliberately fragmented knowledge to maintain power imbalances continues in contemporary classrooms where academic literacy is reduced to decontextualised skills. This perpetuates the notion that certain ways of communicating academic knowledge are inherently superior to others.</p>
+                        <p>When academic literacy is taught as a universal skill set, it fails to acknowledge how language practices reflect deeper epistemological differences in how knowledge is created, validated, and communicated across different cultural and disciplinary contexts.</p>
                     </div>
-                    
-                    <p>By integrating these five modes of communication (visual, aural, spatial, gestural, and linguistic), academic literacy becomes a dynamic, context-specific practice rather than a fixed set of decontextualized skills. This approach recognizes that different disciplines and communities have their own literacy practices, and students need support to navigate these diverse expectations while drawing on their cultural resources.</p>
+
+                    <div class="article-card">
+                        <h3><i class="fas fa-users"></i> Student Experiences and Challenges</h3>
+                        <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo3.jpg?raw=true" alt="Factory automation replacing human judgment with mechanical precision" class="card-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Alienation</div>
+                            <div class="keyword-tab">Identity</div>
+                            <div class="keyword-tab">Cultural Navigation</div>
+                        </div>
+                        <p>For many African students, the autonomous model creates profound alienation. They're expected to mechanically reproduce academic discourses while disconnecting from their cultural identities and home literacies. This demand to suppress one's cultural positioning in knowledge production leaves students feeling like they must choose between academic success and cultural authenticity.</p>
+                        <p>The assumption that academic literacy is a neutral skill set masks how certain communication styles are privileged while others are marginalised. Students face the impossible task of becoming "automated" producers of academic texts without understanding the cultural and disciplinary contexts that give those texts meaning.</p>
+                        <p>This disconnection from their epistemological frameworks not only hinders academic engagement but also undermines students' sense of belonging in academic spaces, contributing to high attrition rates and feelings of exclusion in post-apartheid universities.</p>
+                    </div>
+
+                    <div class="article-card epistemology-card">
+                        <h3><i class="fas fa-globe-africa"></i> Integrating African Epistemologies</h3>
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Indigenous Knowledge</div>
+                            <div class="keyword-tab">Inclusion</div>
+                            <div class="keyword-tab">Epistemological Diversity</div>
+                        </div>
+                        <p>A truly inclusive approach recognises multiple ways of constructing and validating knowledge. Rather than viewing African epistemologies as deficits to be overcome, this perspective sees them as valuable resources for academic engagement. Students bring diverse knowledge traditions that enrich academic discourse when properly integrated into the curriculum.</p>
+                        <p>This approach challenges the dominance of Western academic traditions while maintaining rigorous standards, creating spaces where students can draw on their cultural resources as strengths. It acknowledges that knowledge production varies across contexts and that academic communication reflects these diverse epistemological frameworks.</p>
+                        <p>By validating multiple ways of knowing, we move beyond the limitations of the autonomous model toward an understanding of academic literacy as a dynamic process of meaning-making that honours students' cultural identities while developing their disciplinary expertise.</p>
+                    </div>
                 </div>
 
-                <!-- Empowering African Youth Section -->
-                <div class="full-width-card" id="african-youth">
-                    <h2><i class="fas fa-users"></i> Empowering African Youth Through Multimodal Literacy</h2>
-                    <div class="keyword-tabs">
-                        <div class="keyword-tab">Student Agency</div>
-                        <div class="keyword-tab">Cultural Identity</div>
-                        <div class="keyword-tab">Academic Success</div>
+                <!-- Smaller historical cards for mobile screens -->
+                <div class="mobile-historical-cards">
+                    <div class="mobile-historical-card">
+                        <h3><i class="fas fa-history"></i> Colonial Education Systems</h3>
+                        <img src="https://www.historyireland.com/wp-content/uploads/2016/02/slaves-cutting-sugar-cane.jpg" alt="Enslaved people cutting sugar cane" class="mobile-historical-image slave-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Programming</div>
+                            <div class="keyword-tab">Dehumanising</div>
+                            <div class="keyword-tab">Cultural Erasure</div>
+                        </div>
+                        <p>This image of enslaved labourers reveals how colonial education systems were built on dehumanising practices. Much like the autonomous literacy model treats students as empty vessels to be filled with technical skills, colonial education treated African knowledge as worthless, imposing Western epistemologies while systematically eradicating indigenous ways of knowing. Contemporary research increasingly acknowledges the complex social dimensions of academic communication, highlighting how literacy practices are embedded within broader cultural and institutional frameworks rather than being merely transferable skills.</p>
                     </div>
-                    <p>Multimodal literacy isn't just about communication—it's about empowerment. When African students see their communication practices valued in academic settings, it transforms their relationship with education. No longer forced to abandon their cultural identities to succeed academically, they can leverage their existing strengths while developing new skills.</p>
-                    
-                    <div class="articles-container">
-                        <div class="article-card">
-                            <h3><i class="fas fa-shield-alt"></i> Building Confidence and Identity</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/She%20superhero.png?raw=true" alt="African student empowerment" class="card-image">
-                            <p>When students' multimodal communication practices are recognized as valuable, it validates their cultural identities and builds academic confidence. A student who creates compelling TikTok content already possesses sophisticated digital storytelling skills that can be transferred to academic presentations. Recognizing these connections helps students see themselves as capable learners rather than deficient outsiders.</p>
+
+                    <div class="mobile-historical-card">
+                        <h3><i class="fas fa-balance-scale"></i> Bantu Education Act Legacy</h3>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Sugar_plantation_workers_1890.jpg/1200px-Sugar_plantation_workers_1890.jpg" alt="Sugar plantation workers" class="mobile-historical-image plantation-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Fragmentation</div>
+                            <div class="keyword-tab">Mechanical</div>
+                            <div class="keyword-tab">Assembly Line</div>
                         </div>
-                        
-                        <div class="article-card">
-                            <h3><i class="fas fa-chart-line"></i> Academic Achievement Through Strengths</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo2.png?raw=true" alt="Academic achievement" class="card-image">
-                            <p>Research shows that students perform better when they can connect new learning to existing knowledge and skills. By building on students' multimodal communication strengths, educators create pathways to academic success that honor students' cultural backgrounds. Students who create visual concept maps, record oral explanations, or design digital presentations demonstrate deeper understanding than those constrained to traditional written formats alone.</p>
-                        </div>
-                        
-                        <div class="article-card">
-                            <h3><i class="fas fa-lightbulb"></i> Critical Digital Citizenship</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/DigiCollab.png?raw=true" alt="Digital citizenship" class="card-image">
-                            <p>Multimodal literacy empowers students to become critical digital citizens who can not only consume but also create and evaluate digital content. In contexts where misinformation spreads rapidly through social media, these skills are essential for democratic participation. Students learn to analyze visual rhetoric, evaluate digital sources, and create responsible digital content that contributes positively to online communities.</p>
-                        </div>
-                        
-                        <div class="article-card">
-                            <h3><i class="fas fa-globe-africa"></i> Connecting Local and Global Knowledge</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757085895.png?raw=true" alt="Local and global knowledge" class="card-image">
-                            <p>Through multimodal literacy practices, students can bridge local knowledge systems with global academic discourse. A student might create a digital story that combines traditional oral storytelling with academic research, or design an infographic that presents scientific concepts using culturally relevant visual metaphors. This approach validates both local knowledge traditions and academic expectations.</p>
-                        </div>
+                        <p>The plantation system's division of labour mirrors how the Bantu Education Act created a hierarchy of knowledge. Just as plantation workers were denied access to management knowledge, African students were deliberately provided with inferior education designed to prepare them for subordinate roles in society, creating lasting educational inequalities that persist in post-apartheid universities. This historical context explains why approaches that treat literacy as a neutral skill set often overlook the complex ways in which academic communication is embedded within specific disciplinary communities and cultural contexts.</p>
                     </div>
-                    
-                    <p>The shift from viewing African students' communication practices as deficits to recognizing them as valuable resources transforms educational experiences. Rather than forcing students to conform to narrow academic standards, educators can help students navigate multiple literacy practices while maintaining their cultural identities. This approach not only improves academic outcomes but also fosters a sense of belonging and intellectual confidence that extends beyond the classroom.</p>
+
+                    <div class="mobile-historical-card">
+                        <h3><i class="fas fa-users"></i> Student Experiences and Challenges</h3>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Punch_Rhodes_Colossus.png/270px-Punch_Rhodes_Colossus.png" alt="Rhodes Colossus cartoon" class="mobile-historical-image colossus-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Alienation</div>
+                            <div class="keyword-tab">Identity</div>
+                            <div class="keyword-tab">Cultural Navigation</div>
+                        </div>
+                        <p>This 1892 cartoon depicting Cecil Rhodes straddling Africa symbolises the imperial mindset behind colonial education. Like the autonomous literacy model that demands students abandon their cultural identities, colonial education sought to replace African epistemologies with Western knowledge systems, creating the educational alienation that continues to affect African students in post-apartheid universities. The recognition that academic literacy is inherently situated within specific communities challenges simplistic approaches to academic writing instruction and highlights the need for approaches that build on students' existing strengths rather than treating them as deficits to be fixed.</p>
+                    </div>
                 </div>
 
-                <!-- Community Impact Section -->
-                <div class="full-width-card" id="community-impact">
-                    <h2><i class="fas fa-hands-helping"></i> Community Impact and Sustainable Development</h2>
+                <!-- Disciplinary Approach Section with specific ID -->
+                <h2 class="section-title" id="disciplinary-approach-section">Moving Toward Disciplinary Approaches</h2>
+                
+                <div class="articles-container">
+                    <div class="article-card">
+                        <h3><i class="fas fa-lightbulb"></i> Context-Specific Literacy Development</h3>
+                        <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757089870.png?raw=true" alt="Assembly line showing systematic production process" class="card-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Discourse Communities</div>
+                            <div class="keyword-tab">Knowledge Construction</div>
+                            <div class="keyword-tab">Field-Specific</div>
+                        </div>
+                        <p>Academic literacy varies across disciplines, each with its own discourse community, writing conventions, and knowledge construction practices. Rather than teaching generic academic writing skills, effective approaches help students understand how knowledge is created and communicated within their specific fields of study.</p>
+                        <p>This contextual understanding enables students to navigate disciplinary expectations while drawing on their cultural resources as strengths. It recognises that becoming literate in a discipline involves learning not just technical writing skills but also the epistemological frameworks that shape how knowledge is validated and communicated.</p>
+                        <p>By focusing on context-specific literacy practices, we move beyond the limitations of the autonomous model toward approaches that prepare students for meaningful participation in their chosen academic and professional communities.</p>
+                    </div>
+
+                    <div class="article-card">
+                        <h3><i class="fas fa-handshake"></i> Collaborative Learning Models</h3>
+                        <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/DigiCollab.png?raw=true" alt="Production line demonstrating collaborative work processes" class="card-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Coordination</div>
+                            <div class="keyword-tab">Integration</div>
+                            <div class="keyword-tab">Partnership</div>
+                        </div>
+                        <p>Effective academic literacy development requires collaboration between students, faculty, and literacy specialists. This approach recognises that disciplinary experts understand content knowledge while literacy specialists understand communication practices, and students bring valuable cultural perspectives.</p>
+                        <p>By working together, these stakeholders can create learning environments that honour both disciplinary knowledge and students' cultural identities. This collaborative model moves beyond the deficit perspective of the autonomous model, recognising students as active participants in knowledge creation rather than passive recipients of technical skills.</p>
+                        <p>Such partnerships enable the development of academic literacy approaches that build on students' existing strengths while helping them navigate the complex literacy demands of higher education.</p>
+                    </div>
+
+                    <div class="article-card">
+                        <h3><i class="fas fa-robot"></i> Technological Solutions and Limitations</h3>
+                        <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757085895.png?raw=true" alt="Humanoid robot attempting academic tasks" class="card-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Automation</div>
+                            <div class="keyword-tab">Cultural Disconnect</div>
+                            <div class="keyword-tab">Knowledge Production</div>
+                        </div>
+                        <p>Technology offers powerful tools for academic literacy development, but it cannot replace the human element of meaning-making. While AI writing assistants and grammar checkers can support technical aspects of writing, they cannot teach students to navigate the cultural and disciplinary contexts that give academic writing its meaning.</p>
+                        <p>The danger lies in using technology to reinforce autonomous models by treating academic literacy as merely technical proficiency. True academic literacy development requires understanding how technology mediates knowledge production within specific cultural and disciplinary contexts.</p>
+                        <p>When used thoughtfully, technology can enhance rather than replace the human dimension of academic literacy, supporting students as they develop the ability to communicate effectively across diverse contexts while maintaining their cultural identities.</p>
+                    </div>
+
+                    <div class="article-card">
+                        <h3><i class="fas fa-cogs"></i> Systemic Institutional Change</h3>
+                        <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757090714.png?raw=true" alt="Advanced robotic systems in manufacturing" class="card-image">
+                        <div class="keyword-tabs">
+                            <div class="keyword-tab">Transformation</div>
+                            <div class="keyword-tab">Policy</div>
+                            <div class="keyword-tab">Sustainability</div>
+                        </div>
+                        <p>Moving beyond autonomous models requires comprehensive institutional change. This involves transforming not just teaching practices but also assessment methods, curriculum design, faculty development, and institutional policies to create truly inclusive academic environments.</p>
+                        <p>Sustainable change requires recognising academic literacy as a shared responsibility across the institution rather than the sole domain of writing centers or first-year courses. It demands that all faculty understand how literacy practices function within their disciplines and how to support students' development of these practices.</p>
+                        <p>By implementing systemic changes that acknowledge the cultural and contextual nature of academic literacy, institutions can create learning environments where all students can succeed while maintaining their cultural identities and contributing their unique perspectives to knowledge creation.</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <h2><i class="fas fa-lightbulb"></i> Conclusion</h2>
                     <div class="keyword-tabs">
-                        <div class="keyword-tab">Community Engagement</div>
-                        <div class="keyword-tab">Economic Opportunity</div>
-                        <div class="keyword-tab">Cultural Preservation</div>
+                        <div class="keyword-tab">Inclusion</div>
+                        <div class="keyword-tab">Transformation</div>
+                        <div class="keyword-tab">Epistemological Justice</div>
                     </div>
-                    <p>Multimodal literacy extends beyond individual student success to impact entire communities. When educational approaches honor local communication practices and integrate digital literacy, they create ripple effects that strengthen community ties, preserve cultural heritage, and open economic opportunities.</p>
-                    
-                    <div class="articles-container">
-                        <div class="article-card">
-                            <h3><i class="fas fa-graduation-cap"></i> Transforming Educational Practices</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757089870.png?raw=true" alt="Educational transformation" class="card-image">
-                            <p>When universities adopt multimodal literacy approaches, they transform teaching practices across disciplines. Lecturers develop assignments that allow students to demonstrate knowledge through diverse formats—digital portfolios, visual essays, multimedia presentations, and collaborative projects. This shift creates more inclusive classrooms where diverse communication styles are valued, improving retention rates and academic achievement for African students.</p>
-                        </div>
-                        
-                        <div class="article-card">
-                            <h3><i class="fas fa-briefcase"></i> Economic Empowerment Through Digital Skills</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757090714.png?raw=true" alt="Digital skills for employment" class="card-image">
-                            <p>Proficiency in multimodal communication directly translates to economic opportunity. In today's digital economy, employers value candidates who can create compelling visual content, navigate social media platforms, and communicate across multiple channels. By developing these skills within academic contexts, students graduate with portfolios that demonstrate real-world communication abilities, making them more competitive in the job market.</p>
-                        </div>
-                        
-                        <div class="article-card">
-                            <h3><i class="fas fa-landmark"></i> Preserving Cultural Heritage Digitally</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/royal.png?raw=true" alt="Cultural heritage preservation" class="card-image">
-                            <p>Multimodal literacy provides tools for preserving and revitalizing cultural heritage. Students can document oral histories through audio recordings, create digital archives of traditional art forms, and develop multimedia presentations that make cultural knowledge accessible to new generations. This work not only preserves cultural heritage but also positions students as knowledge creators rather than passive consumers of information.</p>
-                        </div>
-                        
-                        <div class="article-card">
-                            <h3><i class="fas fa-users"></i> Community Knowledge Sharing</h3>
-                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo3.jpg?raw=true" alt="Community knowledge sharing" class="card-image">
-                            <p>Students equipped with multimodal literacy skills become bridges between academic knowledge and community needs. They can translate complex academic concepts into accessible formats for community members, create digital resources that address local challenges, and facilitate knowledge exchange between generations. This community engagement transforms education from a purely individual pursuit to a collective endeavor that benefits society as a whole.</p>
-                        </div>
+                    <p>The limitations of autonomous models of academic literacy are particularly pronounced in post-apartheid African higher education contexts, where the legacy of colonial and apartheid education continues to create barriers for African students. Moving toward disciplinary approaches that integrate African epistemologies and recognise the cultural and contextual nature of literacy practices offers a path toward more inclusive and effective higher education.</p>
+                    <p>Contemporary research increasingly acknowledges the complex social dimensions of academic communication, highlighting how literacy practices are embedded within broader cultural and institutional frameworks rather than being merely transferable skills. This transformation requires sustained commitment from institutions, faculty, and policymakers to create educational environments that honour both academic rigour and cultural diversity, enabling all students to succeed while maintaining their cultural identities and contributing their unique perspectives to knowledge creation.</p>
+                </div>
+                
+                <!-- NEW: Significantly shrunk Street's Call to Action Section -->
+                <div class="contact-card" style="max-width: 500px; margin: 15px auto;">
+                    <h2 style="font-size: 1.1rem; margin-bottom: 10px;"><i class="fas fa-book" style="font-size: 0.9rem;"></i> Key Reading</h2>
+                    <div style="font-size: 0.9rem; line-height: 1.4;">
+                        <p style="margin-bottom: 8px;"><strong>Challenging autonomous models of literacy: Street's call to action</strong></p>
+                        <p style="margin-bottom: 8px; font-size: 0.85rem;">Author: Joanne Larson</p>
+                        <p style="margin-bottom: 10px; font-size: 0.85rem;">This review of Street's work highlights how autonomous models of literacy are problematic and how the ideological model offers a more nuanced understanding of literacy as social practice embedded in power relations.</p>
+                        <a href="https://www.sciencedirect.com/science/article/pii/S0898589896900200" 
+                           target="_blank" 
+                           style="color: var(--primary); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-download" style="font-size: 0.8rem;"></i> Download
+                        </a>
                     </div>
-                    
-                    <p>By embracing multimodal literacy as a framework for academic development, we create educational pathways that honor African students' cultural identities while preparing them for success in a digital world. This approach moves beyond the limitations of traditional academic literacy models to create inclusive spaces where diverse communication practices are recognized as strengths.</p>
-                    
-                    <div class="quote">
-                        "When we recognize the multimodal literacy practices that African youth bring to the classroom, we don't lower standards—we broaden our understanding of what counts as valuable knowledge and communication. This transformation benefits not only students but the entire academic community."
-                    </div>
-                    
-                    <p>The future of academic literacy in Africa lies in approaches that honor students' cultural identities while developing their ability to navigate diverse communication contexts. By embracing multimodal literacy, educators can create learning environments where African youth thrive academically, contribute meaningfully to their communities, and shape the digital future on their own terms.</p>
                 </div>
             </div>
         </div>
@@ -918,6 +1098,7 @@
 
     <!-- Footer Navigation -->
     <div class="footer-nav">
+        <!-- Fixed home button linking to correct URL -->
         <a href="https://oeybers-cpu.github.io/a_lit_models/" class="footer-button">
             <i class="fas fa-home"></i> Home
         </a>
@@ -927,44 +1108,25 @@
     </div>
 
     <script>
-        // Create digital particle effect
-        document.addEventListener('DOMContentLoaded', function() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size
-                const size = Math.random() * 5 + 1;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random position
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation duration
-                const duration = Math.random() * 20 + 10;
-                particle.style.animationDuration = `${duration}s`;
-                
-                // Random delay
-                const delay = Math.random() * 10;
-                particle.style.animationDelay = `${delay}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-            
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+        // Enhanced smooth scrolling with proper section targeting
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Only handle internal links
+                if (this.getAttribute('href').startsWith('#') && this.getAttribute('href') !== '#') {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        // Calculate offset for fixed header
+                        const headerOffset = 140; // Height of fixed header + padding
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
                         });
                         
                         // Update active link
@@ -973,51 +1135,76 @@
                         });
                         this.classList.add('active');
                     }
-                });
-            });
-
-            // Intersection Observer for active link highlighting
-            const observerOptions = {
-                threshold: 0.2,
-                rootMargin: '-100px 0px -50% 0px'
-            };
-
-            const sections = document.querySelectorAll('.full-width-card');
-            const navLinks = document.querySelectorAll('.sidebar-link');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const sectionId = entry.target.id;
-                        document.querySelectorAll('.sidebar-link').forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${sectionId}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all sections
-            sections.forEach(section => {
-                if (section.id) {
-                    observer.observe(section);
                 }
             });
+        });
+
+        // Enhanced Intersection Observer for active link highlighting
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '-100px 0px -50% 0px'
+        };
+
+        const sections = document.querySelectorAll('#introduction-section, #autonomous-models-section, #colonial-legacy-section, #disciplinary-approach-section');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            let foundActive = false;
             
-            // Initial active state
-            document.querySelector('.sidebar-link[href="#introduction"]').classList.add('active');
-            
-            // Top button functionality
-            document.getElementById('topButton').addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            // First check if we're at the top of the page
+            if (window.scrollY < 100) {
+                document.querySelectorAll('.sidebar-link').forEach(link => {
+                    link.classList.remove('active');
                 });
+                document.querySelector('.sidebar-link[href="#introduction-section"]').classList.add('active');
+                return;
+            }
+            
+            // Check sections in reverse order (bottom to top)
+            for (let i = entries.length - 1; i >= 0; i--) {
+                const entry = entries[i];
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    
+                    // Update active link
+                    document.querySelectorAll('.sidebar-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                            foundActive = true;
+                        }
+                    });
+                    
+                    if (foundActive) break;
+                }
+            }
+            
+            // If no section is intersecting, mark the last one as active
+            if (!foundActive && window.scrollY > 0) {
+                const lastSection = sections[sections.length - 1];
+                document.querySelectorAll('.sidebar-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${lastSection.id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Top button functionality
+        document.getElementById('topButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
     </script>
 </body>
 </html>
+as previously displayed in the top right corner.
