@@ -4,433 +4,986 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multimodal Literacy: Diverse Communication</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-dark-start: #020a1a;
-            --bg-dark-end: #041a3d;
-            --text-light: #e0f2f1;
-            --text-secondary: #b0bec5;
-            --text-tertiary: #78909c;
-            --accent-turquoise: #40e0d0;
-            --accent-cyan: #00bcd4;
-            --accent-light-blue: #4fc3f7;
-            --card-bg: rgba(13, 37, 63, 0.7);
-            --card-border: rgba(64, 224, 208, 0.2);
-            --glow-color: rgba(64, 224, 208, 0.6);
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-
+        
+        :root {
+            /* Color Variables - Updated with exact specifications */
+            --primary: #4fc3f7;
+            --secondary: #29b6f6;
+            --accent: #0288d1;
+            --dark: #0a0a14;
+            --darker: #050508;
+            --light: #f0f0f0;
+            --card-bg: rgba(20, 20, 30, 0.7);
+            --lighter-accent: #81d4fa;
+            --digital-purple: #cf40ff;
+            --royal-blue: #4169E1;
+            --royal-blue-light: #6c8eff;
+            --aqua-blue: #00FFFF;
+            --card-padding: 20px;
+            --card-gap: 25px;
+            --nav-banner-height: 60px;
+            
+            /* Sun variables */
+            --sun-color: #FFC107;
+            --sun-glow: #FFA000;
+            --sun-ray-color: #FFD700;
+            
+            /* Warning colors */
+            --warning-red: #ff4444;
+            --warning-glow: #ff6666;
+            
+            /* Font Variables */
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Exo 2', sans-serif;
+        }
+        
         body {
-            font-family: 'Exo 2', sans-serif;
-            background-color: var(--bg-dark-start);
-            background-image: 
-                linear-gradient(to bottom right, var(--bg-dark-start), var(--bg-dark-end)),
-                radial-gradient(ellipse at top left, rgba(0, 188, 212, 0.1), transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(79, 195, 247, 0.1), transparent 50%),
-                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(64, 224, 208, 0.05) 35px, rgba(64, 224, 208, 0.05) 36px);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
             min-height: 100vh;
-        }
-
-        .main-layout {
-            display: flex;
-            flex: 1;
-        }
-
-        .sidebar {
-            width: 280px;
-            padding: 2rem;
-            border-right: 1px solid var(--card-border);
-            flex-shrink: 0;
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 2rem;
-            overflow-y: auto;
-            min-width: 0;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            color: var(--text-light);
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
-            animation: pulse-glow 3s infinite alternate;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent-turquoise);
-            padding-bottom: 0.5rem;
-            color: var(--accent-turquoise);
-            text-shadow: 0 0 5px var(--glow-color);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-light-blue);
-            text-shadow: 0 0 3px var(--glow-color);
-        }
-
-        p {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        a:hover {
-            color: #fff;
-            text-shadow: 0 0 8px var(--accent-cyan);
-        }
-
-        .header {
-            padding: 4rem 2rem;
-            text-align: center;
+            padding: 20px;
             position: relative;
-            overflow: hidden;
-            border-bottom: 2px solid var(--accent-turquoise);
-            min-height: 400px; /* Added to ensure enough space for video */
+            overflow-x: hidden;
+            font-family: var(--font-body);
+            line-height: 1.6;
         }
         
-        /* Video container styles */
-        .video-container {
-            position: absolute;
+        /* Grid Lines Background - Fixed with proper contrast */
+        .grid-lines {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Place behind content */
-            overflow: hidden;
+            background-image:
+                linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
         }
         
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.4; /* Subtle transparency to not overwhelm text */
-        }
-        
-        /* Dark overlay for better text readability */
-        .video-overlay {
-            position: absolute;
+        /* NEW: Dedicated Navigation Banner */
+        .nav-banner {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, 
-                rgba(2, 10, 26, 0.7) 0%, 
-                rgba(4, 26, 61, 0.5) 100%);
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 1; /* Ensure text appears above video */
-        }
-        
-        .home-link {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
+            height: var(--nav-banner-height);
+            background: rgba(5, 5, 12, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 500;
-            z-index: 10;
+            padding: 0 25px;
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
         }
         
-        .home-link:hover {
-            background: rgba(19, 47, 74, 0.9);
-            box-shadow: 0 0 10px var(--glow-color);
+        /* Back Button - Inside Navigation Banner */
+        .back-button-tab {
+            z-index: 1001;
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--royal-blue);
+            color: var(--royal-blue);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .back-button-tab:hover {
+            background: rgba(65, 105, 225, 0.2);
+            transform: translateX(-5px);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Contact Button - Inside Navigation Banner */
+        .contact-button-tab {
+            z-index: 1001;
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--digital-purple);
+            color: var(--digital-purple);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(207, 64, 255, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .contact-button-tab:hover {
+            background: rgba(207, 64, 255, 0.2);
+            transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* NEW: Warning Banner - moved to far right */
+        .warning-banner {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1002;
+            background: var(--warning-red);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: default;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px var(--warning-glow);
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            animation: pulseWarning 1.5s infinite;
+            text-transform: uppercase;
+        }
+        
+        @keyframes pulseWarning {
+            0% {
+                box-shadow: 0 0 20px var(--warning-glow);
+                transform: translateX(0);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 86, 86, 0.9);
+                transform: translateX(-5px);
+            }
+            100% {
+                box-shadow: 0 0 20px var(--warning-glow);
+                transform: translateX(0);
+            }
+        }
+        
+        .warning-banner i {
+            font-size: 1.3rem;
+            animation: flashIcon 1.5s infinite;
+        }
+        
+        @keyframes flashIcon {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Header Styles */
+        .top-header {
+            position: fixed;
+            top: var(--nav-banner-height);
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(10, 10, 20, 0.8);
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+        
+        .top-header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            animation: pulseText 3s infinite alternate;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 70%;
+        }
+        
+        @keyframes pulseText {
+            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
+            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
+        }
+        
+        /* Page Layout */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+            margin-top: 140px;
+        }
+        
+        /* Navigation Sidebar - positioned lower and stays with user as they scroll */
+        .nav-sidebar {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 180px;
+            z-index: 900;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+        }
+        
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .sidebar-link {
+            color: var(--digital-purple);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background: rgba(65, 105, 225, 0.1);
+            border: 1px solid var(--royal-blue);
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(207, 64, 255, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar-link:hover {
+            background: rgba(65, 105, 225, 0.2);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.6);
+            transform: translateX(5px);
+            color: var(--light);
+            border-color: var(--royal-blue-light);
+        }
+        
+        .sidebar-link.active {
+            background: rgba(65, 105, 225, 0.3);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.8);
+            font-weight: 600;
+        }
+        
+        /* Card Styles */
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--card-gap);
+            margin: 30px 0;
+        }
+        
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 12px;
+            padding: var(--card-padding);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(207, 64, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            min-height: 480px;
+        }
+        
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--digital-purple), var(--royal-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(207, 64, 255, 0.3);
+        }
+        
+        .article-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        /* Glowing headings on hover */
+        h2:hover, h3:hover {
+            text-shadow: 0 0 10px var(--digital-purple), 0 0 20px var(--digital-purple);
+            transition: text-shadow 0.3s ease;
+        }
+        
+        .article-card h3 {
+            color: var(--digital-purple);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(207, 64, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .article-card:hover .card-image {
+            transform: scale(1.03);
+        }
+        
+        /* Section Title */
+        .section-title {
+            color: var(--digital-purple);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            font-family: var(--font-heading);
+            text-align: center;
+        }
+        
+        /* Content Container */
+        .main-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .header::before {
+        /* Full-width content card */
+        .full-width-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .full-width-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        .full-width-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .full-width-card h2 {
+            color: var(--digital-purple);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: var(--font-heading);
+        }
+
+        .full-width-card p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: var(--light);
+        }
+        
+        /* Two-column layout for the autonomous models card */
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .column-divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(207, 64, 255, 0.5), transparent);
+            transform: translateX(-50%);
+        }
+        
+        .column {
+            position: relative;
+            padding: 0 15px;
+        }
+        
+        .column h3 {
+            color: var(--digital-purple);
+            margin: 15px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .column-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid rgba(207, 64, 255, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .historical-context {
+            background: rgba(207, 64, 255, 0.08);
+            border-left: 3px solid var(--digital-purple);
+            padding: 12px;
+            border-radius: 0 4px 4px 0;
+            margin: 15px 0;
+        }
+        
+        .modern-context {
+            background: rgba(65, 105, 225, 0.08);
+            border-left: 3px solid var(--royal-blue-light);
+            padding: 12px;
+            border-radius: 0 4px 4px 0;
+            margin: 15px 0;
+        }
+
+        /* Mobile Historical Cards - 50% smaller */
+        .mobile-historical-cards {
+            display: none;
+            grid-template-columns: 1fr;
+            gap: calc(var(--card-gap) / 2);
+            margin: 15px 0;
+        }
+        
+        .mobile-historical-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 6px;
+            padding: calc(var(--card-padding) / 2);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 2.5px 7.5px rgba(207, 64, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mobile-historical-card h3 {
+            color: var(--digital-purple);
+            font-size: 0.65rem;
+            margin-bottom: 7.5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-heading);
+        }
+        
+        .mobile-historical-image {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 7.5px;
+            border: 1px solid rgba(207, 64, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-historical-image.slave-image {
+            object-position: center 20%;
+        }
+        
+        .mobile-historical-image.plantation-image {
+            object-position: center 40%;
+        }
+        
+        .mobile-historical-image.colossus-image {
+            object-position: center 50%;
+        }
+
+        /* Keyword Tabs Styles */
+        .keyword-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .keyword-tab {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid var(--royal-blue);
+            color: var(--royal-blue-light);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 8px rgba(65, 105, 225, 0.5);
+            transition: all 0.3s ease;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .keyword-tab::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.2), transparent);
-            animation: shimmer 5s infinite linear;
-            z-index: 2; /* Above video but below text */
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        @keyframes pulse-glow {
-            from { text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color); }
-            to { text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color); }
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--glow-color);
-            background: rgba(19, 47, 74, 0.8);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
         }
         
-        .image-card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        .keyword-tab:hover::before {
+            left: 100%;
         }
         
-        .image-card {
-            padding: 0;
+        .keyword-tab:hover {
+            box-shadow: 0 0 12px rgba(65, 105, 225, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile keyword tabs */
+        @media (max-width: 600px) {
+            .keyword-tab {
+                padding: 4px 8px;
+                font-size: 0.6rem;
+            }
+        }
+
+        /* Footer Navigation Buttons */
+        .footer-nav {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            padding: 15px 0;
         }
         
-        .image-card .card-image {
-            width: 100%;
-            padding-top: 100%; /* 1:1 Aspect Ratio */
-            position: relative;
-            border-radius: 15px 15px 0 0;
-            overflow: hidden;
+        .footer-button {
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--royal-blue);
+            color: var(--royal-blue);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
         
-        .image-card .card-image img {
+        .footer-button:hover {
+            background: rgba(65, 105, 225, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-button.top {
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--digital-purple);
+            color: var(--digital-purple);
+        }
+        
+        .footer-button.top:hover {
+            background: rgba(207, 64, 255, 0.2);
+            box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
+            color: var(--light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .page-layout {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+        
+        @media (max-width: 1100px) {
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .top-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-sidebar {
+                position: static;
+                margin-bottom: 20px;
+            }
+            
+            .sidebar-nav {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .sidebar-link {
+                padding: 10px 8px;
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            /* Responsive adjustments for the navigation banner */
+            .nav-banner {
+                height: 55px;
+                padding: 0 15px;
+            }
+            
+            .back-button-tab,
+            .contact-button-tab {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .top-header {
+                top: 55px;
+                padding: 12px 10px;
+            }
+            
+            .main-container {
+                margin: 0 auto;
+            }
+            
+            .card-image {
+                height: 160px;
+            }
+            .top-header h1 {
+                font-size: 1.3rem;
+                max-width: 100%;
+                padding: 0 50px;
+                margin-top: 5px;
+            }
+            .contact-card {
+                padding: 15px;
+                margin: 15px auto;
+            }
+            .contact-card h2 {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .article-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            /* Mobile-specific styles */
+            .mobile-historical-cards {
+                display: grid;
+            }
+            
+            /* Adjust warning banner for mobile - moved to far right */
+            .warning-banner {
+                font-size: 0.85rem;
+                padding: 8px 18px;
+                top: 65px;
+                right: 15px;
+            }
+            
+            /* Adjust sidebar positioning for mobile */
+            .nav-sidebar {
+                top: 100px;
+            }
+            
+            /* Footer navigation for mobile */
+            .footer-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Africa Animation in Header */
+        .africa-animation {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            z-index: -1;
+            overflow: hidden;
         }
         
-        .image-card .card-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card h3 i {
-            color: var(--accent-turquoise);
-        }
-
-        .sidebar-nav ul {
-            list-style: none;
-        }
-
-        .sidebar-nav li a {
-            display: block;
-            padding: 0.75rem 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 8px;
-            color: var(--text-secondary);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 500;
-            transition: background 0.3s, color 0.3s, transform 0.3s;
-            border-left: 3px solid transparent;
-        }
-
-        .sidebar-nav li a:hover {
-            background: var(--card-bg);
-            color: var(--text-light);
-            transform: translateX(5px);
-            border-left: 3px solid var(--accent-turquoise);
-        }
-
-        .sidebar-image {
+        .africa-animation video {
             width: 100%;
-            border-radius: 10px;
-            margin-top: 2rem;
-            border: 2px solid var(--card-border);
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
         }
-
-        @media (max-width: 768px) {
-            .main-layout {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid var(--card-border);
-            }
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.7rem; }
-            .header {
-                padding-top: 5rem;
-                padding-bottom: 2rem;
-                min-height: 300px; /* Adjust for mobile */
-            }
-            .home-link {
-                top: 1rem;
-                left: 50%;
-                transform: translateX(-50%);
-            }
+        
+        .africa-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(5, 5, 12, 0.7) 0%, 
+                rgba(10, 10, 20, 0.5) 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <!-- Video Container -->
-            <div class="video-container">
-                <video autoplay muted loop playsinline>
-                    <source src="https://github.com/oeybers-cpu/a_lit_models/raw/91d820214603f40b59a1a9b75b2d3c2a4c73c8ef/a353784b-7ea5-4eee-a717-4346d5e2bedb.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-overlay"></div>
+    <div class="grid-lines"></div>
+    
+    <!-- Navigation Banner -->
+    <div class="nav-banner">
+        <!-- Fixed home button linking to correct URL -->
+        <a href="https://oeybers-cpu.github.io/a_lit_models/" class="back-button-tab" id="homeButton">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <!-- Warning Banner -->
+        <div class="warning-banner">
+            <i class="fas fa-exclamation-triangle"></i> Warning CC
+        </div>
+        <a href="https://oeybers-cpu.github.io/contact/" class="contact-button-tab" id="contactButton">
+            <i class="fas fa-envelope"></i> Contact
+        </a>
+    </div>
+    
+    <div class="top-header">
+        <h1>Multimodal Literacy: Diverse Communication</h1>
+    </div>
+
+    <div class="main-container">
+        <div class="page-layout">
+            <!-- Navigation Sidebar -->
+            <div class="nav-sidebar">
+                <div class="sidebar-nav">
+                    <a href="#introduction" class="sidebar-link active">
+                        <i class="fas fa-book-open"></i> Introduction
+                    </a>
+                    <a href="#modes" class="sidebar-link">
+                        <i class="fas fa-cubes"></i> The Five Modes
+                    </a>
+                    <a href="#gallery" class="sidebar-link">
+                        <i class="fas fa-images"></i> Communication Gallery
+                    </a>
+                </div>
             </div>
             
-            <a href="https://oeybers-cpu.github.io/a_lit_models/" class="home-link" target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-home"></i> Home
-            </a>
-            
-            <div class="header-content">
-                <h1>Multimodal Literacy</h1>
-                <p style="color: var(--text-secondary);">An exploration of meaning, through words and beyond.</p>
-            </div>
-        </header>
-
-        <div class="main-layout">
-            <aside class="sidebar">
-                <nav class="sidebar-nav">
-                    <h3><i class="fas fa-bars" style="color: var(--accent-turquoise);"></i> Navigation</h3>
-                    <ul>
-                        <li><a href="#introduction"><i class="fas fa-book-open"></i> Introduction</a></li>
-                        <li><a href="#modes"><i class="fas fa-cubes"></i> The Five Modes</a></li>
-                        <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
-                    </ul>
-                </nav>
-                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/scholar.png?raw=true" alt="Scholar in library" class="sidebar-image">
-            </aside>
-
-            <main class="main-content">
-                <section id="introduction">
+            <!-- Main Content Area -->
+            <div class="content-area">
+                <!-- Header with Africa Animation -->
+                <div class="africa-animation">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://github.com/oeybers-cpu/a_lit_models/raw/91d820214603f40b59a1a9b75b2d3c2a4c73c8ef/a353784b-7ea5-4eee-a717-4346d5e2bedb.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="africa-overlay"></div>
+                </div>
+                
+                <!-- Introduction Section -->
+                <div class="full-width-card" id="introduction">
                     <h2><i class="fas fa-monument"></i> What is Multimodal Grammar?</h2>
-                    <div class="card">
-                        <p>Communication is rarely just about words. Multimodality is the concept that we create meaning using a combination of different 'modes'. Think of a webpage, a film, or even a face-to-face conversation—they all blend text, images, sounds, and gestures to convey a message. Multimodal grammar is the framework we use to understand how these different modes work together to create a coherent whole. It moves beyond traditional language analysis to explore the rich tapestry of human expression.</p>
-                        <p>This approach recognizes that every element—from the font of a text to the layout of a page—is a deliberate choice that contributes to the overall meaning. By understanding these choices, we become more effective communicators and more critical consumers of information in our increasingly digital world.</p>
-                    </div>
-                </section>
+                    <p>Communication is rarely just about words. Multimodality is the concept that we create meaning using a combination of different 'modes'. Think of a webpage, a film, or even a face-to-face conversation—they all blend text, images, sounds, and gestures to convey a message. Multimodal grammar is the framework we use to understand how these different modes work together to create a coherent whole. It moves beyond traditional language analysis to explore the rich tapestry of human expression.</p>
+                    <p>This approach recognizes that every element—from the font of a text to the layout of a page—is a deliberate choice that contributes to the overall meaning. By understanding these choices, we become more effective communicators and more critical consumers of information in our increasingly digital world.</p>
+                </div>
 
-                <section id="modes">
+                <!-- The Five Modes Section -->
+                <div class="full-width-card" id="modes">
                     <h2><i class="fas fa-cubes"></i> The Five Modes of Communication</h2>
                     <p>Meaning is constructed through various channels. Social semiotics identifies five core modes through which we communicate. Each mode offers unique potentials for making meaning, and they often work in concert to create a rich, layered message.</p>
-                    <div class="card-grid">
-                        <div class="card">
+                    
+                    <div class="articles-container">
+                        <div class="article-card">
                             <h3><i class="fas fa-pen-nib"></i> Linguistic</h3>
                             <p>The mode of words, both written and spoken. It covers vocabulary, grammar, and the structure of sentences and paragraphs.</p>
                         </div>
-                        <div class="card">
+                        <div class="article-card">
                             <h3><i class="fas fa-eye"></i> Visual</h3>
                             <p>Everything we can see. This includes images, colors, symbols, layout, and even the font used in a text.</p>
                         </div>
-                        <div class="card">
+                        <div class="article-card">
                             <h3><i class="fas fa-volume-up"></i> Aural</h3>
                             <p>The mode of sound. This encompasses spoken language, music, sound effects, and the qualities of a voice like tone and pitch.</p>
                         </div>
-                        <div class="card">
+                        <div class="article-card">
                             <h3><i class="fas fa-hand-paper"></i> Gestural</h3>
                             <p>How we use our bodies to communicate. This includes facial expressions, hand gestures, and body language.</p>
                         </div>
-                        <div class="card">
+                        <div class="article-card">
                             <h3><i class="fas fa-th-large"></i> Spatial</h3>
                             <p>The arrangement of elements in space. This applies to the layout of a page, the architecture of a room, or the proximity of people in a conversation.</p>
                         </div>
                     </div>
-                </section>
+                </div>
                 
-                <section id="gallery" style="margin-top: 2rem;">
+                <!-- Gallery Section -->
+                <div class="full-width-card" id="gallery">
                     <h2><i class="fas fa-images"></i> Communication Gallery</h2>
-                    <div class="image-card-grid">
-                        <div class="card image-card">
-                            <div class="card-image">
-                                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true" alt="Digital Communication in Africa">
-                            </div>
-                            <div class="card-content">
-                                <h3>Digital Communication</h3>
-                                <p>Technology merges with culture, creating new forms of expression and connection across distances.</p>
-                            </div>
+                    
+                    <div class="articles-container">
+                        <div class="article-card">
+                            <h3><i class="fas fa-globe-africa"></i> Digital Communication in Africa</h3>
+                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true" alt="Digital Communication in Africa" class="card-image">
+                            <p>Technology merges with culture, creating new forms of expression and connection across distances.</p>
                         </div>
-                        <div class="card image-card">
-                            <div class="card-image">
-                                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/embodied_communication_asia.png?raw=true" alt="Embodied Communication in Asia">
-                            </div>
-                            <div class="card-content">
-                                <h3>Embodied Communication</h3>
-                                <p>Meaning conveyed through the body's posture, gesture, and movement in a shared space.</p>
-                            </div>
+                        <div class="article-card">
+                            <h3><i class="fas fa-dove"></i> Embodied Communication in Asia</h3>
+                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/embodied_communication_asia.png?raw=true" alt="Embodied Communication in Asia" class="card-image">
+                            <p>Meaning conveyed through the body's posture, gesture, and movement in a shared space.</p>
                         </div>
-                        <div class="card image-card">
-                            <div class="card-image">
-                                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/spoken_communication_americas.png?raw=true" alt="Spoken Communication in the Americas">
-                            </div>
-                            <div class="card-content">
-                                <h3>Spoken Communication</h3>
-                                <p>The power of voice, tone, and narrative to share stories and ideas in a community setting.</p>
-                            </div>
+                        <div class="article-card">
+                            <h3><i class="fas fa-microphone"></i> Spoken Communication in the Americas</h3>
+                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/spoken_communication_americas.png?raw=true" alt="Spoken Communication in the Americas" class="card-image">
+                            <p>The power of voice, tone, and narrative to share stories and ideas in a community setting.</p>
                         </div>
-                        <div class="card image-card">
-                            <div class="card-image">
-                                <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/traditional_communication_africa.png?raw=true" alt="Traditional Communication in Africa">
-                            </div>
-                            <div class="card-content">
-                                <h3>Traditional Communication</h3>
-                                <p>Ancient methods of storytelling and record-keeping that form the bedrock of cultural identity.</p>
-                            </div>
+                        <div class="article-card">
+                            <h3><i class="fas fa-book"></i> Traditional Communication in Africa</h3>
+                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/traditional_communication_africa.png?raw=true" alt="Traditional Communication in Africa" class="card-image">
+                            <p>Ancient methods of storytelling and record-keeping that form the bedrock of cultural identity.</p>
                         </div>
                     </div>
-                </section>
-            </main>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Footer Navigation -->
+    <div class="footer-nav">
+        <a href="https://oeybers-cpu.github.io/a_lit_models/" class="footer-button">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <a href="#" class="footer-button top" id="topButton">
+            <i class="fas fa-arrow-up"></i> Top
+        </a>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update active link
+                    document.querySelectorAll('.sidebar-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Intersection Observer for active link highlighting
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '-100px 0px -50% 0px'
+        };
+
+        const sections = document.querySelectorAll('.section-title, .full-width-card, .content-area > div');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    document.querySelectorAll('.sidebar-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        sections.forEach(section => {
+            if (section.id) {
+                observer.observe(section);
+            }
+        });
+        
+        // Initial active state
+        document.querySelector('.sidebar-link[href="#introduction"]').classList.add('active');
+        
+        // Top button functionality
+        document.getElementById('topButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
+
+
+
+The page now has a consistent look and feel with the previous designs while maintaining the Africa animation in the header with the appropriate purple color scheme.
