@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multimodal Literacy: Diverse Communication</title>
+    <title>Multimodal Literacy: Empowering African Youth</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -31,10 +31,10 @@
             --card-gap: 25px;
             --nav-banner-height: 60px;
             
-            /* Sun variables */
-            --sun-color: #FFC107;
-            --sun-glow: #FFA000;
-            --sun-ray-color: #FFD700;
+            /* Digital elements */
+            --digital-grid: rgba(79, 195, 247, 0.03);
+            --digital-grid-hover: rgba(79, 195, 247, 0.1);
+            --digital-glow: rgba(207, 64, 255, 0.3);
             
             /* Warning colors */
             --warning-red: #ff4444;
@@ -56,7 +56,7 @@
             line-height: 1.6;
         }
         
-        /* Grid Lines Background - Fixed with proper contrast */
+        /* Digital Grid Lines Background */
         .grid-lines {
             position: fixed;
             top: 0;
@@ -64,11 +64,36 @@
             width: 100%;
             height: 100%;
             background-image:
-                linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
+                linear-gradient(var(--digital-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--digital-grid) 1px, transparent 1px);
             background-size: 40px 40px;
             pointer-events: none;
             z-index: -1;
+        }
+        
+        /* Digital Particle Effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--digital-purple);
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
         }
         
         /* NEW: Dedicated Navigation Banner */
@@ -425,122 +450,34 @@
             color: var(--light);
         }
         
-        /* Two-column layout for the autonomous models card */
-        .two-column-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
+        /* Narrative Content Section */
+        .narrative-section {
+            margin-bottom: 40px;
         }
         
-        @media (max-width: 768px) {
-            .two-column-layout {
-                grid-template-columns: 1fr;
-            }
+        .narrative-section p {
+            margin-bottom: 15px;
+            line-height: 1.7;
         }
         
-        .column-divider {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, rgba(207, 64, 255, 0.5), transparent);
-            transform: translateX(-50%);
-        }
-        
-        .column {
-            position: relative;
-            padding: 0 15px;
-        }
-        
-        .column h3 {
-            color: var(--digital-purple);
-            margin: 15px 0 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1.2rem;
-        }
-        
-        .column-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin: 15px 0;
-            border: 2px solid rgba(207, 64, 255, 0.3);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .historical-context {
-            background: rgba(207, 64, 255, 0.08);
-            border-left: 3px solid var(--digital-purple);
-            padding: 12px;
-            border-radius: 0 4px 4px 0;
-            margin: 15px 0;
-        }
-        
-        .modern-context {
-            background: rgba(65, 105, 225, 0.08);
-            border-left: 3px solid var(--royal-blue-light);
-            padding: 12px;
-            border-radius: 0 4px 4px 0;
-            margin: 15px 0;
-        }
-
-        /* Mobile Historical Cards - 50% smaller */
-        .mobile-historical-cards {
-            display: none;
-            grid-template-columns: 1fr;
-            gap: calc(var(--card-gap) / 2);
-            margin: 15px 0;
-        }
-        
-        .mobile-historical-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(207, 64, 255, 0.2);
-            border-radius: 6px;
-            padding: calc(var(--card-padding) / 2);
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-            box-shadow: 0 2.5px 7.5px rgba(207, 64, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .mobile-historical-card h3 {
-            color: var(--digital-purple);
-            font-size: 0.65rem;
-            margin-bottom: 7.5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-family: var(--font-heading);
-        }
-        
-        .mobile-historical-image {
-            width: 100%;
-            height: 110px;
-            object-fit: cover;
+        .highlight {
+            background: rgba(207, 64, 255, 0.15);
+            color: var(--primary);
+            padding: 2px 5px;
             border-radius: 4px;
-            margin-bottom: 7.5px;
-            border: 1px solid rgba(207, 64, 255, 0.3);
-            transition: transform 0.3s ease;
+            font-weight: 500;
         }
         
-        .mobile-historical-image.slave-image {
-            object-position: center 20%;
+        .quote {
+            background: rgba(207, 64, 255, 0.1);
+            border-left: 3px solid var(--digital-purple);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--lighter-accent);
         }
         
-        .mobile-historical-image.plantation-image {
-            object-position: center 40%;
-        }
-        
-        .mobile-historical-image.colossus-image {
-            object-position: center 50%;
-        }
-
         /* Keyword Tabs Styles */
         .keyword-tabs {
             display: flex;
@@ -755,44 +692,13 @@
                 align-items: center;
             }
         }
-        
-        /* Africa Animation in Header */
-        .africa-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .africa-animation video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.4;
-        }
-        
-        .africa-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, 
-                rgba(5, 5, 12, 0.7) 0%, 
-                rgba(10, 10, 20, 0.5) 100%);
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
     </style>
 </head>
 <body>
     <div class="grid-lines"></div>
+    
+    <!-- Digital particle effect for subtle movement -->
+    <div class="particles" id="particles"></div>
     
     <!-- Navigation Banner -->
     <div class="nav-banner">
@@ -810,7 +716,7 @@
     </div>
     
     <div class="top-header">
-        <h1>Multimodal Literacy: Diverse Communication</h1>
+        <h1>Multimodal Literacy: Empowering African Youth</h1>
     </div>
 
     <div class="main-container">
@@ -821,88 +727,190 @@
                     <a href="#introduction" class="sidebar-link active">
                         <i class="fas fa-book-open"></i> Introduction
                     </a>
-                    <a href="#modes" class="sidebar-link">
-                        <i class="fas fa-cubes"></i> The Five Modes
+                    <a href="#digital-literacy" class="sidebar-link">
+                        <i class="fas fa-laptop"></i> Digital Literacy
                     </a>
-                    <a href="#gallery" class="sidebar-link">
-                        <i class="fas fa-images"></i> Communication Gallery
+                    <a href="#multimodal-approach" class="sidebar-link">
+                        <i class="fas fa-cubes"></i> Multimodal Approach
+                    </a>
+                    <a href="#african-youth" class="sidebar-link">
+                        <i class="fas fa-users"></i> Empowering African Youth
+                    </a>
+                    <a href="#community-impact" class="sidebar-link">
+                        <i class="fas fa-hands-helping"></i> Community Impact
                     </a>
                 </div>
             </div>
             
             <!-- Main Content Area -->
             <div class="content-area">
-                <!-- Header with Africa Animation -->
-                <div class="africa-animation">
-                    <video autoplay muted loop playsinline>
-                        <source src="https://github.com/oeybers-cpu/a_lit_models/raw/91d820214603f40b59a1a9b75b2d3c2a4c73c8ef/a353784b-7ea5-4eee-a717-4346d5e2bedb.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="africa-overlay"></div>
-                </div>
-                
                 <!-- Introduction Section -->
                 <div class="full-width-card" id="introduction">
-                    <h2><i class="fas fa-monument"></i> What is Multimodal Grammar?</h2>
-                    <p>Communication is rarely just about words. Multimodality is the concept that we create meaning using a combination of different 'modes'. Think of a webpage, a film, or even a face-to-face conversation—they all blend text, images, sounds, and gestures to convey a message. Multimodal grammar is the framework we use to understand how these different modes work together to create a coherent whole. It moves beyond traditional language analysis to explore the rich tapestry of human expression.</p>
-                    <p>This approach recognizes that every element—from the font of a text to the layout of a page—is a deliberate choice that contributes to the overall meaning. By understanding these choices, we become more effective communicators and more critical consumers of information in our increasingly digital world.</p>
+                    <h2><i class="fas fa-book-open"></i> Introduction: Beyond Traditional Literacy</h2>
+                    <div class="keyword-tabs">
+                        <div class="keyword-tab">Multimodal</div>
+                        <div class="keyword-tab">Empowerment</div>
+                        <div class="keyword-tab">Digital Literacy</div>
+                    </div>
+                    <p>In today's digital age, literacy extends far beyond reading and writing. Traditional academic literacy models often fail to recognize the diverse ways young Africans communicate and express knowledge. This page explores how <span class="highlight">multimodal literacy</span> can empower African youth by validating their digital, visual, and cultural communication practices.</p>
+                    
+                    <p>For many African students, the disconnect between their everyday communication practices and academic expectations creates significant barriers. While they navigate complex digital landscapes with ease, traditional academic settings often dismiss these skills as irrelevant. This perspective not only undermines their capabilities but also fails to leverage their existing strengths in the learning process.</p>
+                    
+                    <div class="quote">
+                        "Literacy is not a single skill but a set of practices that vary across contexts and communities. Recognizing the multimodal nature of communication is essential for creating inclusive educational spaces that honor students' cultural identities."
+                    </div>
+                    
+                    <p>By embracing multimodal approaches, we acknowledge that communication happens through multiple channels - visual, digital, gestural, spatial, and linguistic. This recognition is particularly crucial in African contexts where oral traditions, visual storytelling, and community-based knowledge systems have long been central to education and cultural transmission.</p>
                 </div>
 
-                <!-- The Five Modes Section -->
-                <div class="full-width-card" id="modes">
-                    <h2><i class="fas fa-cubes"></i> The Five Modes of Communication</h2>
-                    <p>Meaning is constructed through various channels. Social semiotics identifies five core modes through which we communicate. Each mode offers unique potentials for making meaning, and they often work in concert to create a rich, layered message.</p>
+                <!-- Digital Literacy Section -->
+                <div class="full-width-card" id="digital-literacy">
+                    <h2><i class="fas fa-laptop"></i> Digital Literacy in African Contexts</h2>
+                    <div class="keyword-tabs">
+                        <div class="keyword-tab">Mobile Technology</div>
+                        <div class="keyword-tab">Social Media</div>
+                        <div class="keyword-tab">Digital Navigation</div>
+                    </div>
+                    <p>Africa is experiencing a digital revolution unlike any other. With mobile penetration rates exceeding 80% in many countries, young Africans are becoming digital natives who navigate complex technological landscapes daily. However, traditional academic literacy frameworks often fail to recognize these sophisticated digital practices as legitimate forms of literacy.</p>
                     
                     <div class="articles-container">
                         <div class="article-card">
-                            <h3><i class="fas fa-pen-nib"></i> Linguistic</h3>
-                            <p>The mode of words, both written and spoken. It covers vocabulary, grammar, and the structure of sentences and paragraphs.</p>
+                            <h3><i class="fas fa-mobile-alt"></i> Mobile-First Communication</h3>
+                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true" alt="African youth using mobile technology" class="card-image">
+                            <p>Across Africa, mobile phones have become primary tools for communication, learning, and economic participation. Young people use WhatsApp, Facebook, and other platforms to share knowledge, create communities, and develop digital identities. These practices represent sophisticated multimodal literacy skills that include visual communication, code-switching between languages, and understanding digital audiences.</p>
                         </div>
+                        
                         <div class="article-card">
-                            <h3><i class="fas fa-eye"></i> Visual</h3>
-                            <p>Everything we can see. This includes images, colors, symbols, layout, and even the font used in a text.</p>
-                        </div>
-                        <div class="article-card">
-                            <h3><i class="fas fa-volume-up"></i> Aural</h3>
-                            <p>The mode of sound. This encompasses spoken language, music, sound effects, and the qualities of a voice like tone and pitch.</p>
-                        </div>
-                        <div class="article-card">
-                            <h3><i class="fas fa-hand-paper"></i> Gestural</h3>
-                            <p>How we use our bodies to communicate. This includes facial expressions, hand gestures, and body language.</p>
-                        </div>
-                        <div class="article-card">
-                            <h3><i class="fas fa-th-large"></i> Spatial</h3>
-                            <p>The arrangement of elements in space. This applies to the layout of a page, the architecture of a room, or the proximity of people in a conversation.</p>
+                            <h3><i class="fas fa-hashtag"></i> Social Media as Knowledge Spaces</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/future%20digital%20youth.png?raw=true" alt="African youth engaging on social media" class="card-image">
+                            <p>Social media platforms have become vibrant knowledge spaces where African youth engage in critical discussions, share cultural content, and develop digital citizenship skills. From creating TikTok educational content to participating in Twitter debates about social issues, young Africans are demonstrating advanced multimodal literacy practices that traditional academic settings often overlook.</p>
                         </div>
                     </div>
+                    
+                    <p>These digital practices aren't just recreational; they're essential survival skills in a rapidly changing world. The ability to navigate digital spaces, evaluate online information, and create multimodal content represents a new form of literacy that's crucial for economic participation and social engagement. By recognizing these skills as valuable academic literacies, we can bridge the gap between students' everyday experiences and academic expectations.</p>
                 </div>
-                
-                <!-- Gallery Section -->
-                <div class="full-width-card" id="gallery">
-                    <h2><i class="fas fa-images"></i> Communication Gallery</h2>
+
+                <!-- Multimodal Approach Section -->
+                <div class="full-width-card" id="multimodal-approach">
+                    <h2><i class="fas fa-cubes"></i> The Multimodal Approach to Academic Literacy</h2>
+                    <div class="keyword-tabs">
+                        <div class="keyword-tab">Five Modes</div>
+                        <div class="keyword-tab">Integration</div>
+                        <div class="keyword-tab">Disciplinary Literacy</div>
+                    </div>
+                    <p>Multimodal literacy recognizes that communication happens through multiple channels simultaneously. This approach moves beyond the limitations of traditional literacy models that focus exclusively on written text. For African students, whose cultural backgrounds often emphasize oral, visual, and communal forms of knowledge transmission, a multimodal approach offers a more inclusive framework for academic success.</p>
                     
                     <div class="articles-container">
                         <div class="article-card">
-                            <h3><i class="fas fa-globe-africa"></i> Digital Communication in Africa</h3>
-                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true" alt="Digital Communication in Africa" class="card-image">
-                            <p>Technology merges with culture, creating new forms of expression and connection across distances.</p>
+                            <h3><i class="fas fa-eye"></i> Visual Communication</h3>
+                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/embodied_communication_asia.png?raw=true" alt="Visual communication examples" class="card-image">
+                            <p>Visual literacy is particularly significant in African contexts where visual storytelling traditions run deep. From traditional beadwork patterns to contemporary digital graphics, visual communication carries complex cultural meanings. In academic settings, recognizing visual literacy helps students express knowledge through infographics, presentations, and visual essays that honor their cultural strengths.</p>
                         </div>
+                        
                         <div class="article-card">
-                            <h3><i class="fas fa-dove"></i> Embodied Communication in Asia</h3>
-                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/embodied_communication_asia.png?raw=true" alt="Embodied Communication in Asia" class="card-image">
-                            <p>Meaning conveyed through the body's posture, gesture, and movement in a shared space.</p>
+                            <h3><i class="fas fa-volume-up"></i> Aural and Oral Traditions</h3>
+                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/spoken_communication_americas.png?raw=true" alt="Oral communication traditions" class="card-image">
+                            <p>Africa's rich oral traditions provide powerful frameworks for academic communication. Storytelling, proverbs, and communal discussion formats can be integrated into academic practices, validating students' cultural knowledge while developing their academic voice. Podcasts, oral presentations, and collaborative discussions become legitimate academic practices within this framework.</p>
                         </div>
+                        
                         <div class="article-card">
-                            <h3><i class="fas fa-microphone"></i> Spoken Communication in the Americas</h3>
-                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/spoken_communication_americas.png?raw=true" alt="Spoken Communication in the Americas" class="card-image">
-                            <p>The power of voice, tone, and narrative to share stories and ideas in a community setting.</p>
+                            <h3><i class="fas fa-hands-helping"></i> Spatial and Gestural Communication</h3>
+                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/traditional_communication_africa.png?raw=true" alt="Gestural communication" class="card-image">
+                            <p>How knowledge is organized spatially and expressed through gesture matters deeply in African educational contexts. The arrangement of learning spaces, the use of body language in presentations, and the spatial organization of information all contribute to meaning-making. Recognizing these dimensions helps students communicate effectively in academic settings while maintaining cultural authenticity.</p>
                         </div>
+                        
                         <div class="article-card">
-                            <h3><i class="fas fa-book"></i> Traditional Communication in Africa</h3>
-                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/traditional_communication_africa.png?raw=true" alt="Traditional Communication in Africa" class="card-image">
-                            <p>Ancient methods of storytelling and record-keeping that form the bedrock of cultural identity.</p>
+                            <h3><i class="fas fa-language"></i> Linguistic Diversity</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo1.png?raw=true" alt="Linguistic diversity" class="card-image">
+                            <p>Africa is home to over 2,000 languages, and most African students are multilingual. Rather than viewing this as a deficit, a multimodal approach recognizes code-switching and multilingual communication as sophisticated literacy practices. Academic writing that incorporates African languages, translanguaging, and culturally specific rhetorical patterns becomes a strength rather than a weakness.</p>
                         </div>
                     </div>
+                    
+                    <p>By integrating these five modes of communication (visual, aural, spatial, gestural, and linguistic), academic literacy becomes a dynamic, context-specific practice rather than a fixed set of decontextualized skills. This approach recognizes that different disciplines and communities have their own literacy practices, and students need support to navigate these diverse expectations while drawing on their cultural resources.</p>
+                </div>
+
+                <!-- Empowering African Youth Section -->
+                <div class="full-width-card" id="african-youth">
+                    <h2><i class="fas fa-users"></i> Empowering African Youth Through Multimodal Literacy</h2>
+                    <div class="keyword-tabs">
+                        <div class="keyword-tab">Student Agency</div>
+                        <div class="keyword-tab">Cultural Identity</div>
+                        <div class="keyword-tab">Academic Success</div>
+                    </div>
+                    <p>Multimodal literacy isn't just about communication—it's about empowerment. When African students see their communication practices valued in academic settings, it transforms their relationship with education. No longer forced to abandon their cultural identities to succeed academically, they can leverage their existing strengths while developing new skills.</p>
+                    
+                    <div class="articles-container">
+                        <div class="article-card">
+                            <h3><i class="fas fa-shield-alt"></i> Building Confidence and Identity</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/She%20superhero.png?raw=true" alt="African student empowerment" class="card-image">
+                            <p>When students' multimodal communication practices are recognized as valuable, it validates their cultural identities and builds academic confidence. A student who creates compelling TikTok content already possesses sophisticated digital storytelling skills that can be transferred to academic presentations. Recognizing these connections helps students see themselves as capable learners rather than deficient outsiders.</p>
+                        </div>
+                        
+                        <div class="article-card">
+                            <h3><i class="fas fa-chart-line"></i> Academic Achievement Through Strengths</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo2.png?raw=true" alt="Academic achievement" class="card-image">
+                            <p>Research shows that students perform better when they can connect new learning to existing knowledge and skills. By building on students' multimodal communication strengths, educators create pathways to academic success that honor students' cultural backgrounds. Students who create visual concept maps, record oral explanations, or design digital presentations demonstrate deeper understanding than those constrained to traditional written formats alone.</p>
+                        </div>
+                        
+                        <div class="article-card">
+                            <h3><i class="fas fa-lightbulb"></i> Critical Digital Citizenship</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/DigiCollab.png?raw=true" alt="Digital citizenship" class="card-image">
+                            <p>Multimodal literacy empowers students to become critical digital citizens who can not only consume but also create and evaluate digital content. In contexts where misinformation spreads rapidly through social media, these skills are essential for democratic participation. Students learn to analyze visual rhetoric, evaluate digital sources, and create responsible digital content that contributes positively to online communities.</p>
+                        </div>
+                        
+                        <div class="article-card">
+                            <h3><i class="fas fa-globe-africa"></i> Connecting Local and Global Knowledge</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757085895.png?raw=true" alt="Local and global knowledge" class="card-image">
+                            <p>Through multimodal literacy practices, students can bridge local knowledge systems with global academic discourse. A student might create a digital story that combines traditional oral storytelling with academic research, or design an infographic that presents scientific concepts using culturally relevant visual metaphors. This approach validates both local knowledge traditions and academic expectations.</p>
+                        </div>
+                    </div>
+                    
+                    <p>The shift from viewing African students' communication practices as deficits to recognizing them as valuable resources transforms educational experiences. Rather than forcing students to conform to narrow academic standards, educators can help students navigate multiple literacy practices while maintaining their cultural identities. This approach not only improves academic outcomes but also fosters a sense of belonging and intellectual confidence that extends beyond the classroom.</p>
+                </div>
+
+                <!-- Community Impact Section -->
+                <div class="full-width-card" id="community-impact">
+                    <h2><i class="fas fa-hands-helping"></i> Community Impact and Sustainable Development</h2>
+                    <div class="keyword-tabs">
+                        <div class="keyword-tab">Community Engagement</div>
+                        <div class="keyword-tab">Economic Opportunity</div>
+                        <div class="keyword-tab">Cultural Preservation</div>
+                    </div>
+                    <p>Multimodal literacy extends beyond individual student success to impact entire communities. When educational approaches honor local communication practices and integrate digital literacy, they create ripple effects that strengthen community ties, preserve cultural heritage, and open economic opportunities.</p>
+                    
+                    <div class="articles-container">
+                        <div class="article-card">
+                            <h3><i class="fas fa-graduation-cap"></i> Transforming Educational Practices</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757089870.png?raw=true" alt="Educational transformation" class="card-image">
+                            <p>When universities adopt multimodal literacy approaches, they transform teaching practices across disciplines. Lecturers develop assignments that allow students to demonstrate knowledge through diverse formats—digital portfolios, visual essays, multimedia presentations, and collaborative projects. This shift creates more inclusive classrooms where diverse communication styles are valued, improving retention rates and academic achievement for African students.</p>
+                        </div>
+                        
+                        <div class="article-card">
+                            <h3><i class="fas fa-briefcase"></i> Economic Empowerment Through Digital Skills</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/1757090714.png?raw=true" alt="Digital skills for employment" class="card-image">
+                            <p>Proficiency in multimodal communication directly translates to economic opportunity. In today's digital economy, employers value candidates who can create compelling visual content, navigate social media platforms, and communicate across multiple channels. By developing these skills within academic contexts, students graduate with portfolios that demonstrate real-world communication abilities, making them more competitive in the job market.</p>
+                        </div>
+                        
+                        <div class="article-card">
+                            <h3><i class="fas fa-landmark"></i> Preserving Cultural Heritage Digitally</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/royal.png?raw=true" alt="Cultural heritage preservation" class="card-image">
+                            <p>Multimodal literacy provides tools for preserving and revitalizing cultural heritage. Students can document oral histories through audio recordings, create digital archives of traditional art forms, and develop multimedia presentations that make cultural knowledge accessible to new generations. This work not only preserves cultural heritage but also positions students as knowledge creators rather than passive consumers of information.</p>
+                        </div>
+                        
+                        <div class="article-card">
+                            <h3><i class="fas fa-users"></i> Community Knowledge Sharing</h3>
+                            <img src="https://github.com/oeybers-cpu/autonomous_model/blob/main/robo3.jpg?raw=true" alt="Community knowledge sharing" class="card-image">
+                            <p>Students equipped with multimodal literacy skills become bridges between academic knowledge and community needs. They can translate complex academic concepts into accessible formats for community members, create digital resources that address local challenges, and facilitate knowledge exchange between generations. This community engagement transforms education from a purely individual pursuit to a collective endeavor that benefits society as a whole.</p>
+                        </div>
+                    </div>
+                    
+                    <p>By embracing multimodal literacy as a framework for academic development, we create educational pathways that honor African students' cultural identities while preparing them for success in a digital world. This approach moves beyond the limitations of traditional academic literacy models to create inclusive spaces where diverse communication practices are recognized as strengths.</p>
+                    
+                    <div class="quote">
+                        "When we recognize the multimodal literacy practices that African youth bring to the classroom, we don't lower standards—we broaden our understanding of what counts as valuable knowledge and communication. This transformation benefits not only students but the entire academic community."
+                    </div>
+                    
+                    <p>The future of academic literacy in Africa lies in approaches that honor students' cultural identities while developing their ability to navigate diverse communication contexts. By embracing multimodal literacy, educators can create learning environments where African youth thrive academically, contribute meaningfully to their communities, and shape the digital future on their own terms.</p>
                 </div>
             </div>
         </div>
@@ -919,71 +927,97 @@
     </div>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    // Update active link
-                    document.querySelectorAll('.sidebar-link').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                }
-            });
-        });
-
-        // Intersection Observer for active link highlighting
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '-100px 0px -50% 0px'
-        };
-
-        const sections = document.querySelectorAll('.section-title, .full-width-card, .content-area > div');
-        const navLinks = document.querySelectorAll('.sidebar-link');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sectionId = entry.target.id;
-                    document.querySelectorAll('.sidebar-link').forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${sectionId}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections
-        sections.forEach(section => {
-            if (section.id) {
-                observer.observe(section);
+        // Create digital particle effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size
+                const size = Math.random() * 5 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                const delay = Math.random() * 10;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
             }
-        });
-        
-        // Initial active state
-        document.querySelector('.sidebar-link[href="#introduction"]').classList.add('active');
-        
-        // Top button functionality
-        document.getElementById('topButton').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Update active link
+                        document.querySelectorAll('.sidebar-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Intersection Observer for active link highlighting
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '-100px 0px -50% 0px'
+            };
+
+            const sections = document.querySelectorAll('.full-width-card');
+            const navLinks = document.querySelectorAll('.sidebar-link');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.id;
+                        document.querySelectorAll('.sidebar-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            sections.forEach(section => {
+                if (section.id) {
+                    observer.observe(section);
+                }
+            });
+            
+            // Initial active state
+            document.querySelector('.sidebar-link[href="#introduction"]').classList.add('active');
+            
+            // Top button functionality
+            document.getElementById('topButton').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
 </body>
 </html>
-
-
-
-The page now has a consistent look and feel with the previous designs while maintaining the Africa animation in the header with the appropriate purple color scheme.
